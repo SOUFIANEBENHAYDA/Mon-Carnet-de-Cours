@@ -22,6 +22,10 @@ function donne_verification(){
     //require_once __DIR__. '/../view/tst.php';
 }
 
+function add_etudiant(){
+    require_once __DIR__."/../view/ajouter_etudiant_vew.php";
+    inscrire();
+}
 
 
 

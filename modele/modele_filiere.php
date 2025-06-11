@@ -58,7 +58,7 @@ class Filiere{
     }
 
 
-    function display(){
+    static function display(){
         $pdo = connexion_database();
         $stmt = $pdo -> prepare("SELECT * FROM filieres");
         $stmt->execute();
