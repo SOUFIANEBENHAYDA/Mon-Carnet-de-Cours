@@ -41,7 +41,7 @@ function loginAdmin_action(){
     }
     //echo "veullez remplire tous les champs";
 }
-function inscrire(){};
+
 function ajouter_matiere(){};
 
 class Admin{
