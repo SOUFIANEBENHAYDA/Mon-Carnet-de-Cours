@@ -17,7 +17,7 @@ function connexion_database(){
 }
 
 function loginEtudiant(){
-    $pdo=connexion();
+    $pdo=connexion_database();
     $email=$_POST["email"];
     $stat=$pdo->prepare("SELECT * FROM etudiant where email=:email");
     $stat->bindParam(":email",$email);
