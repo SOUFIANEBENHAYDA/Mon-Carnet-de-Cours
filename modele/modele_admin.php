@@ -38,8 +38,8 @@ function inscrire(){};
 function ajouter_matiere(){};
 
 class Admin{
-    public $email, $pwd;
-    public $nom, $prenom, $ida;
+    private $email, $pwd;
+    private $nom, $prenom, $ida;
 
     public function __construct($email, $nom, $prenom, $ida, $pwd)
     {
@@ -49,6 +49,42 @@ class Admin{
         $this->email=$email;
         $this->pwd=$pwd;
     }
+
+
+    function getEmail(){
+        return $this->email;
+    }
+    function getNom(){
+        return $this->nom;
+    }
+    function getPrenom(){
+        return $this->prenom;
+    }
+    function getIdA(){
+        return $this->ida;
+    }
+    function getPassword(){
+        return $this->pwd;
+    }
+
+
+    function setEmail($email){
+        $this->email=$email;
+    }
+    function setNom($nom){
+        $this->nom=$nom;
+    }
+    function setPrenom($prenom){
+        $this->prenom=$prenom;
+    }
+    function setIdA($ida){
+        $this->ida=$ida;
+    }
+    function setPassword($pwd){
+        $this->pwd=$pwd;
+    }
+    
+
     
     //ajouter des nouveau etudiant
     public function insciription(){
