@@ -12,6 +12,35 @@ function connexion_database(){
     }catch(PDOException $e){
         die("Connexion error :" . $e->getMessage());
     }
+
+
+}
+
+function loginEtudiant(){
+    $pdo=connexion();
+    $email=$_POST["email"];
+    $stat=$pdo->prepare("SELECT * FROM etudiant where email=:email");
+    $stat->bindParam(":email",$email);
+    $stat->execute();
+    return $stat->fetch();
+}
+
+function loginEtudiant_action(){
+    if(!empty($_POST["password"]) && !empty($_POST["email"])){
+        $res=loginEtudiant();
+        if($res!=false){
+            if($res["password"]===$_POST["password"]){
+                session_start();
+                $etudiant= new Etudiant($res["ida"], $res["nom"], $res["prenom"], $res["filiers_id"], $res["email"],$res["password"], $res["photo"]);
+                $_SESSION["etudiant"]=$etudiant;
+                header("Location: interfaceEtudiant.php");
+                exit();
+            }
+        }else{
+            echo "email doesn't exit";
+        }
+    }
+    echo "veullez remplire tous les champs";
 }
 
 class Etudiant{
