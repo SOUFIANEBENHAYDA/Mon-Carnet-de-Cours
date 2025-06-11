@@ -12,24 +12,30 @@ function connexion(){
 function loginAdmin(){
     $pdo=connexion();
     $email=$_POST["email"];
-    $stat=$pdo->prepare("SELECT * FROM administration where email=:email");
+    $stat=$pdo->prepare("SELECT * FROM administration WHERE email=:email");
     $stat->bindParam(":email",$email);
     $stat->execute();
     return $stat->fetch();
 }
 function loginAdmin_action(){
     if(!empty($_POST["password"]) && !empty($_POST["email"])){
-        echo "<script>alert('welcome')</script>";
         $res=loginAdmin();
+        var_dump($res);
+        echo "<script>alert('welcome')</script>";
         if($res!=false){
+            echo "<script>alert('befor into check password')</script>";
             if($res["password"]==$_POST["password"]){
+                echo "<script>alert('matched')</script>";
                 session_start();
                 $admin= new Admin($res["ida"], $res["nom"], $res["prenom"],$res["email"],$res["password"]);
                 $_SESSION["admin"]=$admin;
                 header("Location: ../view/acceuil_admin.php");
                 exit();
+            }else{
+                echo "<script>alert('password wrong')</script>";
             }
         }else{
+            echo "<script>alert('didn't match email')</script>";
             //+echo "email doesn't exit";
         }
     }
