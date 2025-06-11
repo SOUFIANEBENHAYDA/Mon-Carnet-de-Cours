@@ -19,7 +19,7 @@ function connexion_database(){
 function loginEtudiant(){
     $pdo=connexion_database();
     $email=$_POST["email"];
-    $stat=$pdo->prepare("SELECT * FROM etudiant where email=:email");
+    $stat=$pdo->prepare("SELECT * FROM etudiants where email=:email");
     $stat->bindParam(":email",$email);
     $stat->execute();
     return $stat->fetch();
@@ -29,9 +29,9 @@ function loginEtudiant_action(){
     if(!empty($_POST["password"]) && !empty($_POST["email"])){
         $res=loginEtudiant();
         if($res!=false){
-            if($res["password"]===$_POST["password"]){
+            if($res["mot_de_pass"]===$_POST["password"]){
                 session_start();
-                $etudiant= new Etudiant($res["ida"], $res["nom"], $res["prenom"], $res["filiers_id"], $res["email"],$res["password"], $res["photo"]);
+                $etudiant= new Etudiant($res["ida"], $res["nom"], $res["prenom"], $res["filiers_id"], $res["email"],$res["mot_de_pass"], $res["photo"]);
                 $_SESSION["etudiant"]=$etudiant;
                 header("Location: ../view/tst.php");
                 exit();
