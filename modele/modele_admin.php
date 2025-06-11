@@ -29,7 +29,7 @@ function loginAdmin_action(){
                 exit();
             }
         }else{
-            //echo "email doesn't exit";
+            //+echo "email doesn't exit";
         }
     }
     //echo "veullez remplire tous les champs";
