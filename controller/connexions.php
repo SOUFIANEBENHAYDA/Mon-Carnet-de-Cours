@@ -16,7 +16,7 @@ function connexion_etudiant(){
 function donne_verification(){
     $x = loginEtudiant_action(); 
     //completement
-    require_once __DIR__. '/../view/choix_connexion.php';
+    //require_once __DIR__. '/../view/tst.php';
 }
 
 
