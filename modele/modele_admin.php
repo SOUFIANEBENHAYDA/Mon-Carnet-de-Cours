@@ -22,7 +22,7 @@ function loginAdmin_action(){
         echo "<script>alert('welcome')</script>";
         $res=loginAdmin();
         if($res!=false){
-            if($res["password"]===$_POST["password"]){
+            if($res["password"]==$_POST["password"]){
                 session_start();
                 $admin= new Admin($res["ida"], $res["nom"], $res["prenom"],$res["email"],$res["password"]);
                 $_SESSION["admin"]=$admin;

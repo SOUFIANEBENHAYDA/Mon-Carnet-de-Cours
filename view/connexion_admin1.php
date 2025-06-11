@@ -125,10 +125,10 @@
         <form method="post" action="trait_admin.php">
             <h1>Login</h1>
             <div class="box">
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Example@mail.com" name="email" required>
             </div>
             <div class="box">
-                <input type="password" placeholder="password" required>
+                <input type="password" placeholder="password" name="password" required>
             </div>
             <div class="forget">
                 <a href="#">forget password ?</a>
