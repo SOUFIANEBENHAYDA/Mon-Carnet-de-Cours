@@ -70,10 +70,10 @@
 <body>
     <div class="box"> 
         <button class="btn">
-            <a href="view/connexion_admin2.php"> Admin </a>
+            <a href="view/connexion_admin1.php"> Admin </a>
         </button>
         <button class="btn">
-            <a href="view/connexion_etudiant.php"">Etudiant</a>
+            <a href="view/connexion_etudiant.php">Etudiant</a>
         </button>
     </div>
 </body>
