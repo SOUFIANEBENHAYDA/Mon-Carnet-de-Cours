@@ -8,7 +8,7 @@ function choix_connexion(){
     
 }
 
-function connexion_admin(){
+function connexion_etudiant(){
     require_once __DIR__. '/../view/connexion_etudiant.php';
 }
 

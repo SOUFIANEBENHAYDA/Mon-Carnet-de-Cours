@@ -1,4 +1,7 @@
 <?php
+function inscrire(){};
+function ajouter_matiere(){};
+
 class Admin{
     public $email, $pwd;
     public $nom, $prenom, $ida;
