@@ -12,7 +12,7 @@ function connexion(){
 function loginAdmin(){
     $pdo=connexion();
     $email=$_POST["email"];
-    $stat=$pdo->prepare("SELECT * FROM Administration where email=:email");
+    $stat=$pdo->prepare("SELECT * FROM administration where email=:email");
     $stat->bindParam(":email",$email);
     $stat->execute();
     return $stat->fetch();
