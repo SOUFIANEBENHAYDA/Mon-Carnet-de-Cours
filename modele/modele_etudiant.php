@@ -35,6 +35,7 @@ function loginEtudiant_action(){
                 $_SESSION["etudiant"]=$etudiant;
                 header("Location: ../view/acceuil_etudiants.php");
                 exit();
+            
             }
         }else{
             echo "email doesn't exit";
