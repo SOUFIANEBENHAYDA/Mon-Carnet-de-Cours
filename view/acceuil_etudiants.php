@@ -4,9 +4,5 @@
 
 
 
-echo "welcome";
-
-
-
 
 ?>
