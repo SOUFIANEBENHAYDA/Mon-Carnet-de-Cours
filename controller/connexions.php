@@ -16,7 +16,7 @@ function connexion_admin(){
 
 
 function donne_verification(){
-    $x = loginEtudiant_action(); 
+    $etudiant = loginEtudiant_action(); 
     //completement
     //require_once __DIR__. '/../view/tst.php';
 }
