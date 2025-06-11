@@ -33,7 +33,7 @@ function loginEtudiant_action(){
                 session_start();
                 $etudiant= new Etudiant($res["ida"], $res["nom"], $res["prenom"], $res["filiers_id"], $res["email"],$res["mot_de_pass"], $res["photo"]);
                 $_SESSION["etudiant"]=$etudiant;
-                header("Location: ../view/tst.php");
+                header("Location: ../view/acceuil_etudiants.php");
                 exit();
             }
         }else{
