@@ -19,6 +19,7 @@ function loginAdmin(){
 }
 function loginAdmin_action(){
     if(!empty($_POST["password"]) && !empty($_POST["email"])){
+        echo "<script>alert('welcome')</script>";
         $res=loginAdmin();
         if($res!=false){
             if($res["password"]===$_POST["password"]){

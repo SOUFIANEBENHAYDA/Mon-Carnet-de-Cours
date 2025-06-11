@@ -10,7 +10,7 @@ function choix_connexion(){
 }
 
 function connexion_admin(){
-    $admin = loginAdmin_action();
+    loginAdmin_action();
 
     //require_once __DIR__. '/../view/connexion_etudiant.php';
 }

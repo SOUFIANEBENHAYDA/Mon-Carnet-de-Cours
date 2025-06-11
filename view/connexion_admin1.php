@@ -58,11 +58,11 @@
         border: 2px solid rgb(255,255,255,0.2);
         border-radius: 50px;
         font-size: 16px;
-        color: white;
+        color: black;
         padding: 20px 45px 20px 20px;
     }
     .box input::placeholder{
-        color: white;
+        color:black;
     }
     .box i {
         position: absolute;
