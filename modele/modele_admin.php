@@ -1,5 +1,5 @@
 <?php
-function connexion(){
+function connexion_datebase(){
     try{
         $pdo=new PDO("mysql:host=localhost;dbname=academique", "root", "");
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -10,7 +10,7 @@ function connexion(){
 }
 
 function loginAdmin(){
-    $pdo=connexion();
+    $pdo=connexion_database();
     $email=$_POST["email"];
     $stat=$pdo->prepare("SELECT * FROM administration WHERE email=:email");
     $stat->bindParam(":email",$email);

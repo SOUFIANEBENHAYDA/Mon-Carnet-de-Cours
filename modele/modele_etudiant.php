@@ -133,7 +133,7 @@ function verifier_donne(){
 }
 
 function inscrire(){
-    $pdo=connexion();
+    $pdo=connexion_database();
     $stat=$pdo->prepare("INSERT INTO etudiants(nom, email, photo, id_filiere, mot_de_pass, niveau) VALUES(:nom, :email, :photo, :idf, :pwd, :niveau)");
     $stat->bindParam(":nom", $_POST["nom"]);
     $stat->bindParam(":email", $_POST["email"]);
