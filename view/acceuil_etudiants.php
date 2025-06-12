@@ -11,7 +11,8 @@
 <body>
     <nav class="navbar navbar-expand mt-3 p-3">
             <div class="container-fluid">
-                <a href="#" class="navbar-brand "><b>Nom de Web site</b></a>
+                <a href="#" class="navbar-brand "><b>EduTrack</b></a>
+                <img src="../Images/EduTrack.jpg" alt="" width="100px">
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
