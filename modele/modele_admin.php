@@ -18,7 +18,7 @@ function loginAdmin(){
     return $stat->fetch();
 }
 function loginAdmin_action(){
-    if(!empty($_POST["password"]) && !empty($_POST["email"])){
+    if(!empty($_POST["email"]) && !empty($_POST["password"])){
         $res=loginAdmin();
         var_dump($res);
         echo "<script>alert('welcome')</script>";

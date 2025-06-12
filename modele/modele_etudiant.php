@@ -26,12 +26,12 @@ function loginEtudiant(){
 }
 
 function loginEtudiant_action(){
-    if(!empty($_POST["password"]) && !empty($_POST["email"])){
+    if(!empty($_POST["email"]) && !empty($_POST["password"])){
         $res=loginEtudiant();
         if($res!=false){
             if($res["mot_de_pass"]===$_POST["password"]){
                 session_start();
-                $etudiant= new Etudiant($res["ida"], $res["nom"], $res["prenom"], $res["filiers_id"], $res["email"],$res["mot_de_pass"], $res["photo"]);
+                $etudiant= new Etudiant($res["id_etudiant"], $res["telephone"], $res["nom"], $res["email"], $res["photo"],$res["id_filiere"], $res["mot_de_pass"]);
                 $_SESSION["etudiant"]=$etudiant;
                 
             
