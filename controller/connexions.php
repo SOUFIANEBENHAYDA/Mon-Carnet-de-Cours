@@ -11,15 +11,18 @@ function choix_connexion(){
 
 function connexion_admin(){
     loginAdmin_action();
+    header("Location: ../view/acceuil_admin.php");
+    exit();
 
-    //require_once __DIR__. '/../view/connexion_etudiant.php';
+    
 }
 
 
 function donne_verification(){
-    $x = loginEtudiant_action(); 
-    //completement
-    //require_once __DIR__. '/../view/tst.php';
+    $x = loginEtudiant_action();
+    header("Location: ../view/acceuil_etudiants.php");
+    exit(); 
+    
 }
 
 function add_etudiant(){

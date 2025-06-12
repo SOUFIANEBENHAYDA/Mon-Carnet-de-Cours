@@ -29,8 +29,7 @@ function loginAdmin_action(){
                 session_start();
                 $admin= new Admin($res["ida"], $res["nom"], $res["prenom"],$res["email"],$res["password"]);
                 $_SESSION["admin"]=$admin;
-                header("Location: ../view/acceuil_admin.php");
-                exit();
+                
             }else{
                 echo "<script>alert('password wrong')</script>";
             }
