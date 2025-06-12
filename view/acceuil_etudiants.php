@@ -25,6 +25,12 @@
                             <a href="nav-link" class="text-decoration-none text-dark">Emploie</a>
                         </ul>
                         <ul class="nav-item">
+                            <a href="nav-link" class="text-decoration-none text-dark">Notes</a>
+                        </ul>
+                        <ul class="nav-item">
+                            <a href="nav-link" class="text-decoration-none text-dark">Espace Collaboratif</a>
+                        </ul>
+                        <ul class="nav-item">
                             <a href="nav-link" class="text-decoration-none text-dark">CONTACT</a>
                         </ul>
                     </ul>
