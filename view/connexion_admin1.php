@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/conn_admin.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap/js/bootstrap.js">
     <title>Document</title>
 </head>
@@ -21,7 +21,7 @@
             <div class="forget">
                 <a href="#">forget password ?</a>
             </div>
-            <button type="submit" class="button">Login</button>
+            <button type="submit" class="button btn btn-primary">Login</button>
             <div class="register">
                 <p>Don't have account ? <a href="#">Register</a></p>
             </div>
