@@ -11,17 +11,13 @@ function choix_connexion(){
 
 function connexion_admin(){
     loginAdmin_action();
-    header("Location: ../view/acceuil_admin.php");
-    exit();
 
     
 }
 
 
 function donne_verification(){
-    $x = loginEtudiant_action();
-    header("Location: ../view/acceuil_etudiants.php");
-    exit(); 
+    loginEtudiant_action();
     
 }
 
