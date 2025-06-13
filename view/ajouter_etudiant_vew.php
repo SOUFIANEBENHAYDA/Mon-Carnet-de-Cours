@@ -5,7 +5,7 @@ $res=display_filiers();
 
 <html>
     <body>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <label for="nom">Nom Complete:</label>
             <input type="text" name="nom">
 
