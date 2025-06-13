@@ -100,7 +100,7 @@ $res=display_filiers();
                         Ajouter un Nouvel Étudiant
                     </div>
                     <div class="card-body p-5">
-                        <form>
+                        <form action="" method="post">
 
                             <div class="mb-4 text-center">
                                 <div class="photo-placeholder" id="photoPlaceholder">

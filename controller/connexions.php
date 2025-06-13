@@ -22,7 +22,10 @@ function donne_verification(){
     
 }
 
+
+//*********** */
 function add_etudiant(){
+    $res=display_filiers();
     require_once __DIR__."/../view/ajouter_etudiant_vew.php";
     inscrire();
 }
