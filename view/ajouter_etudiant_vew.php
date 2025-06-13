@@ -1,7 +1,6 @@
 <?php
-require_once __DIR__."/../modele/modele_filiere.php";
-$res=Filiere::display()
-
+require_once __DIR__."/../controller/connexions.php";
+$res=display_filiers();
 ?>
 
 <html>

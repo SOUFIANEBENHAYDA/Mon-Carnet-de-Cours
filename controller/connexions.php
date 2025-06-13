@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../modele/modele_etudiant.php';
 require_once __DIR__ . '/../modele/modele_admin.php';
+require_once __DIR__ . '/../modele/modele_filiere.php';
 
 
 
@@ -26,6 +27,10 @@ function add_etudiant(){
     inscrire();
 }
 
+function display_filiers(){
+    
+    return Filiere::display();
+}
 
 
 ?>

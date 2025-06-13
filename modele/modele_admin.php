@@ -1,13 +1,5 @@
 <?php
-function connexion_datebase(){
-    try{
-        $pdo=new PDO("mysql:host=localhost;dbname=academique", "root", "");
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        return $pdo;
-    }catch(PDOException $er){
-        die("error de connexion: ".$er->getMessage());
-    }
-}
+require_once __DIR__."/../modele/connexion_db.php";
 
 function loginAdmin(){
     $pdo=connexion_database();
