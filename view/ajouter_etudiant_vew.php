@@ -148,6 +148,8 @@ $res=display_filiers();
                                     <label for="password" class="form-label">Mot de pass</label>
                                     <input type="text" class="form-control" id="password" name="password" required>
                                 </div>
+
+    <!--************************-->
                                 <div class="col-md-6 mb-3">
                                     <label for="filiere" class="form-label">Filière</label>
                                     <select class="form-select" id="filiere" name="filiere">
