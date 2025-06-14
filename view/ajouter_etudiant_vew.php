@@ -100,7 +100,7 @@ $res=display_filiers();
                         Ajouter un Nouvel Étudiant
                     </div>
                     <div class="card-body p-5">
-                        <form action="" method="post">
+                        <form action="../view/trait_info.php" method="post" enctype="multipart/form-data">
 
                             <div class="mb-4 text-center">
                                 <div class="photo-placeholder" id="photoPlaceholder">
@@ -188,6 +188,25 @@ $res=display_filiers();
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script>
+        document.getElementById("photoPlaceholder").addEventListener("click", function () {
+            document.getElementById("photoInput").click();
+        });
+
+        document.getElementById("photoInput").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const previewImage = document.getElementById("previewImage");
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
 
 </body>
 </html>

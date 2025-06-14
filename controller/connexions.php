@@ -27,7 +27,7 @@ function donne_verification(){
 function add_etudiant(){
     $res=display_filiers();
     require_once __DIR__."/../view/ajouter_etudiant_vew.php";
-    inscrire();
+    
 }
 
 function display_filiers(){
@@ -35,5 +35,9 @@ function display_filiers(){
     return Filiere::display();
 }
 
+function create_etudiant(){
+    inscrire();
+    header('location: ../view/acceuil_admin.php');
+}
 
 ?>

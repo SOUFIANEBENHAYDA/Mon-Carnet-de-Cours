@@ -96,7 +96,7 @@
             </a>
         </div>
         <div class="col-md-4">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="../view/ajouter_etudiant.php" class="text-decoration-none text-dark">
                 <div class="dashboard-box ajouter">
                     <h4>👨‍🎓 Ajouter Étudiants</h4>
                     <p>Créer un nouveau compte étudiant avec ses informations.</p>

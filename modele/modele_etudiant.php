@@ -121,24 +121,30 @@ function verifier_donne(){
 function inscrire(){
     $pdo=connexion_database();
 
-    if(!empty($_POST["nom"])&&!empty($_POST["tel"])&&!empty($_POST["email"])&&!empty($_POST["genre"])&&!empty($_POST["dn"])&&!empty($_POST["niveau"])&&!empty($_FILES["photo"])&&!empty($_POST["filiere"])&&!empty($_POST["pwd"])){   
+    if(!empty($_POST["nom"])&&!empty($_POST["tele"])&&!empty($_POST["email"])&&!empty($_POST["genre"])&&!empty($_POST["date_nais"])&&!empty($_POST["niveau"])&&!empty($_FILES["photo"])&&!empty($_POST["filiere"])&&!empty($_POST["password"])){   
         $img=$_FILES["photo"];
+        $dossier = "../photos/";
+        $nomImage = $_FILES['photo']['name'];
+        $cheminImage = $dossier . $nomImage;
 
-        $stat=$pdo->prepare("INSERT INTO etudiants(nom, telephone, email, genre, date_nissance, photo, id_filiere, mot_de_pass, niveau) VALUES(:nom, :tel, :email, :genre, :dn, :photo, :idf, :pwd, :niveau)");
-        $stat->bindParam(":nom", $_POST["nom"]);
-        $stat->bindParam(":tel", $_POST["tel"]);
-        $stat->bindParam(":email", $_POST["email"]);
-        $stat->bindParam(":genre", $_POST["genre"]);
-        $stat->bindParam(":dn", $_POST["dn"]);
-        $stat->bindParam(":niveau", $_POST["niveau"]);
-        $stat->bindParam(":photo", $path);
-        $stat->bindParam(":idf", $_POST["filiere"]);
-        $stat->bindParam(":pwd", $_POST["pwd"]);
-        
-        $stat->execute();
+        if(move_uploaded_file($_FILES['photo']['tmp_name'], $cheminImage))
+            $stat=$pdo->prepare("INSERT INTO etudiants(nom, telephone, email, genre, date_nissance, photo, id_filiere, mot_de_pass, niveau) VALUES(:nom, :tel, :email, :genre, :dn, :photo, :idf, :pwd, :niveau)");
+            $stat->bindParam(":nom", $_POST["nom"]);
+            $stat->bindParam(":tel", $_POST["tele"]);
+            $stat->bindParam(":email", $_POST["email"]);
+            $stat->bindParam(":genre", $_POST["genre"]);
+            $stat->bindParam(":dn", $_POST["date_nais"]);
+            $stat->bindParam(":niveau", $_POST["niveau"]);
+            $stat->bindParam(":photo", $dossier);
+            $stat->bindParam(":idf", $_POST["filiere"]);
+            $stat->bindParam(":pwd", $_POST["password"]);
+            $stat->execute();
         
         //header("Location:")
-    }
+        }
+        else{
+            echo "error";
+        }
     
 };
 
