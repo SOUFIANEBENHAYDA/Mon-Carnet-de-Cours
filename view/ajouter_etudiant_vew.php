@@ -153,9 +153,11 @@ $res=display_filiers();
                                     <label for="filiere" class="form-label">Filière</label>
                                     <select class="form-select" id="filiere" name="filiere">
                                         <option selected disabled>Choisir...</option>
-                                        <option value="1">Developpement Digitl</option>
-                                        <option value="2">Gestion des Entreprises</option>
-                                        <option value="3">Marketing Digital</option>
+                                        <?php 
+                                        foreach($res as $f){
+                                            echo "<option value='".$f["id_filiere"]."'>".$f["nom"]."</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 
@@ -168,9 +170,6 @@ $res=display_filiers();
                                     <option selected disabled>Choisir...</option>
                                     <option value="1">Niveau 1</option>
                                     <option value="2">Niveau 2</option>
-                                    <option value="3">Niveau 3</option>
-                                    <option value="4">Niveau 4</option>
-                                    <option value="5">Niveau 5</option>
                                 </select>
                             </div>
 
