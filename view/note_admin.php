@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin - Gestion des Notes</title>
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
-  <link rel="stylesheet" href="../fontawesome-free-6.7.1-web/fontawesome-free-6.7.1-web/css/all.css" />
+  <link rel="stylesheet" href="../fontawesome-free-6.7.1-web/css/all.css"/>
 
   <style>
     :root {
@@ -147,6 +147,9 @@
       td:nth-child(4)::before { content: "Note"; }
       td:nth-child(5)::before { content: "Action"; }
     }
+    a{
+        text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -155,7 +158,7 @@
     <h2>🧾 Gestion des Notes - Admin</h2>
 
     <div class="d-flex justify-content-end mb-4">
-      <button class="btn btn-ajouter">+ Ajouter une note</button>
+      <button class="btn btn-ajouter"> <a href="../view/ajt_note.php">+ Ajouter une note</a></button>
     </div>
 
     <table>
@@ -215,6 +218,6 @@
     </table>
   </div>
 
-  <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

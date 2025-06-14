@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../modele/modele_etudiant.php';
 require_once __DIR__ . '/../modele/modele_admin.php';
 require_once __DIR__ . '/../modele/modele_filiere.php';
+require_once __DIR__ . '/../modele/modele_notes.php';
 
 
 
@@ -42,6 +43,14 @@ function create_etudiant(){
 
 function note_admin(){
     require_once __DIR__.'/../view/note_admin.php';
+}
+
+function add_note(){
+    require_once __DIR__.'/../view/ajouter_note.php';
+}
+
+function verify_note(){
+    Note::create_note();
 }
 
 ?>

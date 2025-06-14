@@ -53,7 +53,7 @@ class Note{
 
 
 
-    function display(){
+    static function display(){
         $pdo = connexion_database();
         $stmt = $pdo -> prepare("SELECT * FROM notes");
         $stmt->execute();
@@ -61,9 +61,12 @@ class Note{
         return $result;
         
     }
-    function create(){
+
+    static function create_note(){
         $pdo = connexion_database();
     }
+
+
     function edit(){
         $pdo = connexion_database();
     }
