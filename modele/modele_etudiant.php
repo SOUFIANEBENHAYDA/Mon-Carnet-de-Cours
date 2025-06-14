@@ -140,7 +140,7 @@ function inscrire(){
             $stat->bindParam(":idf", $_POST["filiere"]);
             $stat->bindParam(":pwd", $_POST["password"]);
             $stat->execute();
-        
+            
             //header("Location:")
         }
         else{
