@@ -40,4 +40,8 @@ function create_etudiant(){
     header('location: ../view/acceuil_admin.php');
 }
 
+function note_admin(){
+    require_once __DIR__.'/../view/note_admin.php';
+}
+
 ?>
