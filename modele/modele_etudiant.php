@@ -127,7 +127,8 @@ function inscrire(){
         $nomImage = $_FILES['photo']['name'];
         $cheminImage = $dossier . $nomImage;
 
-        if(move_uploaded_file($_FILES['photo']['tmp_name'], $cheminImage))
+        if(move_uploaded_file($_FILES['photo']['tmp_name'], $cheminImage)){
+
             $stat=$pdo->prepare("INSERT INTO etudiants(nom, telephone, email, genre, date_nissance, photo, id_filiere, mot_de_pass, niveau) VALUES(:nom, :tel, :email, :genre, :dn, :photo, :idf, :pwd, :niveau)");
             $stat->bindParam(":nom", $_POST["nom"]);
             $stat->bindParam(":tel", $_POST["tele"]);
@@ -140,11 +141,12 @@ function inscrire(){
             $stat->bindParam(":pwd", $_POST["password"]);
             $stat->execute();
         
-        //header("Location:")
+            //header("Location:")
         }
         else{
             echo "error";
         }
+    }
     
 };
 
