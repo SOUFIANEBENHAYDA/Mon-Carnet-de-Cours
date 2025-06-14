@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
+
+    <?php
+    session_start();
+    if(!isset($_SESSION["etudiant"])){
+      header("Location: ../index.php");
+      exit();
+    }
+    ?>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -263,8 +272,14 @@
       <div class="user-info">
         <div class="user-name">Nom</div>
         <div class="user-role">Filière</div>
+<!-- photo dynamique-->
+    <?php
+    //$path=$_SESSION["etudiant"]->getPhoto();
+    ?>
+ 
       </div>
-      <img src="#" alt="Photo de profil" class="user-avatar" />
+
+      <img src="<?php echo $path ; ?>" alt="Photo de profil" class="user-avatar" />
     </div>
   </header>
 
