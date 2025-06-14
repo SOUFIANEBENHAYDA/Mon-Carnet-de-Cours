@@ -27,6 +27,7 @@
             border-radius: 50%;
             width: 50px;
         }
+        
     </style>
 </head>
 <body>
@@ -53,7 +54,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="#" class="text-decoration-none text-dark ">
                     <div class="dashboard-box">
                         <h4>📅 Emploi du Temps</h4>
                         <p>Consulter et organiser les horaires des cours.</p>
