@@ -133,7 +133,6 @@ $res=display_filiers();
                                         <option selected disabled>Choisir...</option>
                                         <option value="M">Masculin</option>
                                         <option value="F">Féminin</option>
-                                        <option value="A">Autre</option>
                                     </select>
                                 </div>
                             </div>
@@ -189,22 +188,6 @@ $res=display_filiers();
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-        <script>
-        document.getElementById("photoPlaceholder").addEventListener("click", function () {
-            document.getElementById("photoInput").click();
-        });
-        document.getElementById("photoInput").addEventListener("change", function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const previewImage = document.getElementById("previewImage");
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = "block";
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
+
 </body>
 </html>
