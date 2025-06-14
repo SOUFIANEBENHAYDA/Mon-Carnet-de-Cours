@@ -153,10 +153,9 @@ $res=display_filiers();
                                     <label for="filiere" class="form-label">Filière</label>
                                     <select class="form-select" id="filiere" name="filiere">
                                         <option selected disabled>Choisir...</option>
-                                        <option value="Developpement Digitl">Developpement Digitl</option>
-                                        <option value="Gestion des Entreprises">Gestion des Entreprises</option>
-                                        <option value="Marketing Digital">Marketing Digital</option>
-                                        <option value="Design">Design</option>
+                                        <option value="1">Developpement Digitl</option>
+                                        <option value="2">Gestion des Entreprises</option>
+                                        <option value="3">Marketing Digital</option>
                                     </select>
                                 </div>
                                 
