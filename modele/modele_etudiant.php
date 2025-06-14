@@ -122,7 +122,7 @@ function inscrire(){
     $pdo=connexion_database();
 
     if(!empty($_POST["nom"])&&!empty($_POST["tele"])&&!empty($_POST["email"])&&!empty($_POST["genre"])&&!empty($_POST["date_nais"])&&!empty($_POST["niveau"])&&!empty($_FILES["photo"])&&!empty($_POST["filiere"])&&!empty($_POST["password"])){   
-        $img=$_FILES["photo"];
+        
         $dossier = "../photos/";
         $nomImage = $_FILES['photo']['name'];
         $cheminImage = $dossier . $nomImage;
@@ -135,7 +135,7 @@ function inscrire(){
             $stat->bindParam(":genre", $_POST["genre"]);
             $stat->bindParam(":dn", $_POST["date_nais"]);
             $stat->bindParam(":niveau", $_POST["niveau"]);
-            $stat->bindParam(":photo", $dossier);
+            $stat->bindParam(":photo", $cheminImage);
             $stat->bindParam(":idf", $_POST["filiere"]);
             $stat->bindParam(":pwd", $_POST["password"]);
             $stat->execute();
