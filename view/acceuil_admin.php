@@ -23,13 +23,19 @@
             transform: scale(1.1);
             background-color: #F5F5F5;
         }
+        img{
+            border-radius: 50%;
+            width: 50px;
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-dark bg-dark mb-5">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">EduTrack - Admin</span>
+            <span class="navbar-brand mb-0 h1" >EduTrack - Admin
+                <img src="../Images/EduTrack.jpg" alt="EduTrack">
+            </span>
             <a href="#" class="btn btn-outline-light">Déconnexion</a>
         </div>
     </nav>

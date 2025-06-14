@@ -367,7 +367,7 @@
 
     <header class="app-header">
         <div class="app-logo">
-            <img src="#" alt="EduTrack">
+            <img src="../Images/EduTrack.jpg" alt="EduTrack" style="border-radius: 50%;">
             <h1>EduTrack</h1>
         </div>
         <div class="user-profile">
