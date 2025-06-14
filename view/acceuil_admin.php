@@ -72,7 +72,7 @@
             </a>
         </div>
         <div class="col-md-4">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="../view/note_ad.php" class="text-decoration-none text-dark">
                 <div class="dashboard-box notes">
                     <h4>📊 Suivi des Notes</h4>
                     <p>Gérer les notes des étudiants par matière.</p>
