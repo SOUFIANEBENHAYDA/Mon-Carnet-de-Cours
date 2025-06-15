@@ -202,10 +202,10 @@
           <td>'.$r["note"].'</td>
           <td>
           <button class="btn btn-sm btn-outline-warning me-2" title="Modifier">
-          <i class="fas fa-pen"></i>
+          <a href="edit_note.php?id='.$r["idn"].'&nom_etud='.$r["nom_etud"].'&matiere='.$r["matiere"].'&type='.$r["type_note"].'&note='.$r["note"].'" class="fas fa-pen"></a>
           </button>
           <button class="btn btn-sm btn-outline-danger" title="Supprimer">
-          <i class="fas fa-trash-alt"></i>
+          <a href="delete_note.php?id='.$r["idn"].'" class="fas fa-trash-alt"></a>
           </button>
           </td>
           </tr>';

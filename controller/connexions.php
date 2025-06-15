@@ -1,11 +1,14 @@
 <?php
+
+use Dom\Document;
+
 require_once __DIR__ . '/../modele/modele_filiere.php';
 require_once __DIR__ . '/../modele/modele_etudiant.php';
 require_once __DIR__ . '/../modele/modele_admin.php';
 require_once __DIR__ . '/../modele/modele_notes.php';
 require_once __DIR__ . '/../modele/modele_matiere.php';
 require_once __DIR__ . '/../modele/modele_prof.php';
-require_once __DIR__."../modele/modele_documents.php";
+require_once __DIR__ . '/../modele/modele_documents.php';
 
 
 
@@ -71,13 +74,43 @@ function add_note(){
     $res=Note::note_etud_display();
     require_once __DIR__.'/../view/ajouter_note.php';
 }
+function edite_note(){
+    $res=Note::note_etud_display();
+    if(!empty($_GET["ide"])&&!empty($_GET["nom_etud"])&&!empty($_GET["matiere"])&&!empty($_GET["type"])&&!empty($_GET["note"])){
+        require_once __DIR__.'../view/edite_note_view.php';
+        
+    }
+
+}
+
+function note_destroy(){
+    if(!empty($_GET["id"])){
+        Note::destroy($_GET["id"]);
+        header("Location: ../view/note_admin.php");
+        exit();
+    }
+}
 
 function verify_note(){
     Note::create_note();
 }
 
-function document_action(){
+function document_display_action(){
+    $res=Documents::display();
+    require_once "../view/doc_view.php";
+}
 
+function ajouter_doc(){
+    if(!empty($_POST["titre"]) && !empty($_POST["id_matiere"]) && isset($_FILES["fichier"])) {
+        $fichier = "../uploaded_docs/" . $_FILES["fichier"]["name"];
+        move_uploaded_file($_FILES["fichier"]["tmp_name"], $fichier);
+        $doc = new Documents($_POST["titre"], $fichier, $_POST["id_matiere"]);
+        $doc->ajouter();
+    }
+
+    // Load matieres and the view
+    $res = Matiere::display();
+    require_once "../view/ajouter_doc_view.php";
 }
 
 
@@ -148,6 +181,7 @@ function display_etudiants_par_filiere() {
         echo "</div>";
     }
     echo '<a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>';
+    echo '<button class="btn btn-warning"> <a href="../view/ajouter_etudiant.php">+ Ajouter Etudiant</a></button>';
 
     echo '</div></body></html>';
 }

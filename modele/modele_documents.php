@@ -10,7 +10,7 @@ class Documents{
     private $fichier;
     private $id_matiere;
 
-    function __construct($id_document,$titre,$fichier,$id_matiere)
+    function __construct($titre,$fichier,$id_matiere,$id_document="")
     {
         $this->id_document = $id_document;
         $this->titre = $titre;
@@ -47,7 +47,7 @@ class Documents{
     }
 
 
-    function display(){
+    static function display(){
         $pdo = connexion_database();
         $stmt = $pdo -> prepare("SELECT * FROM documents");
         $stmt->execute();
@@ -56,8 +56,13 @@ class Documents{
 
         
     }
-    function create(){
+    function ajouter(){
         $pdo = connexion_database();
+        $stat=$pdo->prepare("INSERT INTO documents(titre, fichier, id_matiere) values(:titre, :fichier, :idm)");
+        $stat->bindParam(":titre", $this->titre);
+        $stat->bindParam(":fichier", $this->fichier);
+        $stat->bindParam(":idm", $this->id_matiere);
+        $stat->execute();
     }
     function edit(){
         $pdo = connexion_database();

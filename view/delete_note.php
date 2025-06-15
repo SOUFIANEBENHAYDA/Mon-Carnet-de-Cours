@@ -1,5 +1,7 @@
 <?php
+
+$id=$_GET["id"];
 require_once "../controller/connexions.php";
-document_display_action();
+note_destroy();
 
 ?>
