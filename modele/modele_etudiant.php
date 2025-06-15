@@ -181,4 +181,13 @@ function display_pare_filier($f){
     return $result;
 }
 
+function etudiant_id_par_nom($nom){
+    $pdo=connexion_database();
+    $stat=$pdo->prepare("SELECT * FROM etudiants where nom=:nom");
+    $stat->bindParam(":nom", $nom);
+    $stat->execute();
+    $result=$stat->fetch();
+    return $result['id_etudiant'];
+}
+
 ?>

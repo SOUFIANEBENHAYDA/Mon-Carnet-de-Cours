@@ -80,21 +80,25 @@
             <div class="mb-3">
                 <label for="matiere" class="form-label">Matière</label>
                 <select id="matiere" name="matiere" class="form-control" required>
-                    <option value="">-- Sélectionnez --</option>
-                    <option value="php">PHP Avancé</option>
-                    <option value="js">JavaScript</option>
-                    <option value="bdd">Base de données</option>
+                    <option value="">--Choisier matiere--</option>
+                    <?php
+                    $res = Matiere::display();
+                    foreach($res as $ligne){
+                        echo "<option value='{$ligne['id_matiere']}'>{$ligne['nom']}</option>";
+                    }
+                    ?>
                 </select>
             </div>
 
             <div class="mb-3">
                 <label for="type" class="form-label">Type d'évaluation</label>
                 <select id="type" name="type" class="form-control" required>
-                    <option value="">-- Sélectionnez --</option>
-                    <option value="cc">Contrôle Continu (CC)</option>
-                    <option value="tp">Travail Pratique (TP)</option>
-                    <option value="efm">Examen Final (EFM) </option>
-                    <option value="projet">Projet </option>
+                    <?php 
+                    $types = ['CC', 'TP', 'EFM', 'Projet'];
+                    foreach ($types as $t) {
+                        echo "<option value=\"$t\">$t</option>";
+                    }
+                    ?>
                 </select>
             </div>
 

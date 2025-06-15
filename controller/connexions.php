@@ -55,7 +55,12 @@ function create_etudiant(){
 }
 
 function note_admin(){
+    $res = Matiere::display();
     require_once __DIR__.'/../view/note_admin.php';
+    
+}
+function id_etudiant_parNom_action($nom){
+    $id_nom = etudiant_id_par_nom($nom);
 }
 
 function add_note(){
@@ -91,7 +96,7 @@ function display_etudiants_par_filiere(){
     <?php
 
 }
-
+/*
 function ajouter_matiere(){
     require_once "../view/ajouter_matiere.php";
 
@@ -102,4 +107,5 @@ function ajouter_matiere(){
         header("Location: ../view/acceuil_admin.php");
     }
 }
+    */
 ?>

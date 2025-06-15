@@ -64,6 +64,14 @@ class Note{
 
     static function create_note(){
         $pdo = connexion_database();
+        if(isset($_POST['nom'])&&isset($_POST['matiere'])&&isset($_POST['type'])&&isset($_POST['note'])){
+            $stmt = $pdo->prepare("INSERT INTO notes(type_note,valeur,id_etudiant,id_matiere) VALUES(:typen,:valeur,:ide,:idm)");
+            $stmt->bindParam(':typen',$_POST['type']);
+            $stmt->bindParam(':valeur',$_POST['note']);
+            $stmt->bindParam(':ide',id_etudiant_parNom_action($_POST['nom']));
+            $stmt->bindParam(':idm',$_POST['matiere']);
+            $stmt->execute();
+        }
     }
 
 

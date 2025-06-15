@@ -45,7 +45,7 @@ class Matiere{
     }
 
 
-    function display(){
+    static function display(){
         $pdo = connexion_database();
         $stmt = $pdo -> prepare("SELECT * FROM matieres");
         $stmt->execute();
