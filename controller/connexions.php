@@ -39,7 +39,14 @@ function display_filiers(){
 }
 
 function display_prof(){
-    return Professeur::display();
+    $result=Professeur::display();
+    require_once __DIR__."/../view/ajouter_matiere.php";
+
+}
+
+function add_matiere(){
+    Matiere::ajouter();
+    require_once __DIR__. '/../view/acceuil_admin.php';
 }
 
 function create_etudiant(){

@@ -62,13 +62,20 @@ class Matiere{
         $pdo = connexion_database();
     }
 
-    function ajouter(){
+    static function ajouter(){
         $pdo=connexion_database();
-        $stat=$pdo->prepare("INSERT INTO matieres(nom, coefficient, id_prof) VALUES(:nom, :c, :idp)");
-        $stat->bindParam(":nom", $this->nom);
-        $stat->bindParam(":c", $this->coefficient);
-        $stat->bindParam(":idp", $this->id_prof);
-        $stat->execute();
+        if(isset($_POST['nom'])&&isset($_POST['coef'])&&isset($_POST['idp'])){
+
+            $stat=$pdo->prepare("INSERT INTO matieres(nom, coefficient, id_prof) VALUES(:nom, :c, :idp)");
+            $stat->bindValue(":nom", $_POST['nom']);
+            $stat->bindValue(":c", $_POST['coef']);
+            $stat->bindValue(":idp", $_POST['idp']);
+            $stat->execute();
+
+        }
+        else{
+            echo "<script>alert('error')</script>";
+        }
     }
 }
 
