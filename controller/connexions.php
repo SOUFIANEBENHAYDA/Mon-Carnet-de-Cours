@@ -65,7 +65,7 @@ function display_etudiants_par_filiere(){
         $etudes=display_pare_filier($r["id_filiere"]);
         foreach($etudes as $e){
             echo "
-            <tr><td>{$e['nom']}</td><td>{$e['email']}</td>{$e['tel']}</tr>
+            <tr><td>{$e['nom']}</td><td>{$e['email']}</td><td>{$e['telephone']}</td></tr>
             ";
             //ila ba9i biti tzid lakhrin 3la 9bl l crud dyalhom
             
