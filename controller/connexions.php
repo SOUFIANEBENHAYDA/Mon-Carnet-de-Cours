@@ -61,6 +61,7 @@ function note_admin(){
 }
 function id_etudiant_parNom_action($nom){
     $id_nom = etudiant_id_par_nom($nom);
+    return $id_nom;
 }
 
 function add_note(){
