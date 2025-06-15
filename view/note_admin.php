@@ -186,34 +186,30 @@
             </button>
           </td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Adam</td>
-          <td>Physique</td>
-          <td>11</td>
+        <?php 
+        //had l3iba tani hhhhhh
+        require_once "../controller/connexions.php";
+        $res=Note::note_etud_display();
+        var_dump($res);
+        foreach($res as $r){
+          echo'
+          <tr>
+          <td>'.$r["ide"].'</td>
+          <td>'.$r["nom_etud"].'</td>
+          <td>'.$r["matiere"].'</td>
+          <td>'.$r["type_note"].'</td>
+          <td>'.$r["note"].'</td>
           <td>
-            <button class="btn btn-sm btn-outline-warning me-2" title="Modifier">
-              <i class="fas fa-pen"></i>
-            </button>
-            <button class="btn btn-sm btn-outline-danger" title="Supprimer">
-              <i class="fas fa-trash-alt"></i>
-            </button>
+          <button class="btn btn-sm btn-outline-warning me-2" title="Modifier">
+          <i class="fas fa-pen"></i>
+          </button>
+          <button class="btn btn-sm btn-outline-danger" title="Supprimer">
+          <i class="fas fa-trash-alt"></i>
+          </button>
           </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Sophia</td>
-          <td>Chimie</td>
-          <td>7.5</td>
-          <td>
-            <button class="btn btn-sm btn-outline-warning me-2" title="Modifier">
-              <i class="fas fa-pen"></i>
-            </button>
-            <button class="btn btn-sm btn-outline-danger" title="Supprimer">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </td>
-        </tr>
+          </tr>';
+          }
+        ?>
       </tbody>
     </table>
   </div>

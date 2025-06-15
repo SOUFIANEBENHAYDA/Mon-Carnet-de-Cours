@@ -65,6 +65,7 @@ function id_etudiant_parNom_action($nom){
 }
 
 function add_note(){
+    $res=Note::note_etud_display();
     require_once __DIR__.'/../view/ajouter_note.php';
 }
 

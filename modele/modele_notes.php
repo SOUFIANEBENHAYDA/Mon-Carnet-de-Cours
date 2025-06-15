@@ -74,6 +74,14 @@ class Note{
             $stmt->execute();
         }
     }
+    //affiche tous les notes dans la base de donnee
+    static function note_etud_display(){
+        $pdo=connexion_database();
+        $stat=$pdo->prepare('SELECT  e.id_etudiant as "ide", e.nom as "nom_etud", m.nom as "matiere",n.type_note as "type_note", n.valeur as "note" FROM etudiants e INNER JOIN notes n ON e.id_etudiant=n.id_etudiant INNER JOIN matieres m ON n.id_matiere=m.id_matiere;');
+        $stat->execute();
+        $notes=$stat->fetchAll();
+        return $notes;
+        }
 
 
     function edit(){
