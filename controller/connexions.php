@@ -72,29 +72,73 @@ function verify_note(){
 }
 
 //mal9itch kifach ndir liha b view hada lah
-function display_etudiants_par_filiere(){
-    $res=display_filiers();
-    foreach($res as $r){
-        echo "
-        <h3>list de filiere {$r['nom']}<h3>
-        <table>
-        <tr><th>Nom et prenom</th><th>email</th><th>telephone</th></tr>
-        ";
-        $etudes=display_pare_filier($r["id_filiere"]);
-        foreach($etudes as $e){
-            echo "
-            <tr><td>{$e['nom']}</td><td>{$e['email']}</td><td>{$e['telephone']}</td></tr>
-            ";
-            //ila ba9i biti tzid lakhrin 3la 9bl l crud dyalhom
-            
-        }
-        echo "
-        </table>
-        ";
-    }
-    ?>
-    <?php
+function display_etudiants_par_filiere() {
+    $res = display_filiers();
+    echo '<!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liste des Étudiants par Filière</title>
+        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+        <style>
+            body {
+                background: #f0f2f5;
+                font-family: Arial, sans-serif;
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+            .container {
+                max-width: 900px;
+            }
+            h3 {
+                color: #003973;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">';
 
+    foreach ($res as $r) {
+        echo "<div class='my-5 p-4 bg-white shadow rounded'>";
+        echo "<h3 class='mb-4'>Étudiants de la filière : <strong>{$r['nom']}</strong></h3>";
+
+        $etudes = display_pare_filier($r["id_filiere"]);
+
+        if (!empty($etudes)) {
+            echo "
+                <div class='table-responsive'>
+                    <table class='table table-bordered table-striped'>
+                        <thead class='table-dark'>
+                            <tr>
+                                <th>Nom et prénom</th>
+                                <th>Email</th>
+                                <th>Téléphone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            ";
+            foreach ($etudes as $e) {
+                echo "
+                            <tr>
+                                <td>{$e['nom']}</td>
+                                <td>{$e['email']}</td>
+                                <td>{$e['telephone']}</td>
+                            </tr>
+                ";
+            }
+            echo "
+                        </tbody>
+                    </table>
+                </div>
+            ";
+        } else {
+            echo "<div class='alert alert-warning'>Aucun étudiant trouvé dans cette filière.</div>";
+        }
+
+        echo "</div>";
+    }
+
+    echo '</div></body></html>';
 }
 /*
 function ajouter_matiere(){
