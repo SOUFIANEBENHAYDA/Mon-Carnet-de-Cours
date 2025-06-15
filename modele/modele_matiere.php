@@ -9,12 +9,12 @@ class Matiere{
     private $coefficient;
     private $id_prof;
 
-    function __construct($id_matiere,$nom,$coefficient,$id_prof)
+    function __construct($nom,$coefficient,$id_prof,$id_matiere="")
     {
-        $this->id_matiere=$id_matiere;
         $this->nom=$nom;
         $this->coefficient=$coefficient;
         $this->id_prof=$id_prof;
+        $this->id_matiere=$id_matiere; //maghadich n7tajo ID ta3 lmatiere f contructeur
     }
 
     function getId_matiere(){
@@ -50,7 +50,7 @@ class Matiere{
         $stmt = $pdo -> prepare("SELECT * FROM matieres");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;        
+        return $result;
     }
     function create(){
         $pdo = connexion_database();
@@ -60,6 +60,15 @@ class Matiere{
     }
     function destroy(){
         $pdo = connexion_database();
+    }
+
+    function ajouter(){
+        $pdo=connexion_database();
+        $stat=$pdo->prepare("INSERT INTO matieres(nom, coefficient, id_prof) VALUES(:nom, :c, :idp)");
+        $stat->bindParam(":nom", $this->nom);
+        $stat->bindParam(":c", $this->coefficient);
+        $stat->bindParam(":idp", $this->id_prof);
+        $stat->execute();
     }
 }
 

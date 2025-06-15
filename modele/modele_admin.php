@@ -25,16 +25,22 @@ function loginAdmin_action(){
                 
             }else{
                 echo "<script>alert('password wrong')</script>";
+                header("Location: ../view/connexion_admin1.php");
+                exit();
             }
         }else{
             echo "<script>alert('didn't match email')</script>";
+            header("Location: ../view/connexion_admin1.php");
+            exit();
             //+echo "email doesn't exit";
         }
     }
     //echo "veullez remplire tous les champs";
+    header("Location: ../view/connexion_admin1.php");
+    exit();
 }
 
-function ajouter_matiere(){};
+
 
 class Admin{
     private $email, $pwd;

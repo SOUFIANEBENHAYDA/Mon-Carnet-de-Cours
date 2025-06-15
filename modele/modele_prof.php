@@ -49,7 +49,7 @@ class Professeur{
 
 
     
-    function display(){
+    static function display(){
         $pdo = connexion_database();
         $stmt = $pdo -> prepare("SELECT * FROM professeurs");
         $stmt->execute();

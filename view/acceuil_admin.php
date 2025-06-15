@@ -56,7 +56,7 @@
 
     <div class="row g-4">
         <div class="col-md-4">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="../view/ajouter_matiere.php" class="text-decoration-none text-dark">
                 <div class="dashboard-box matiere">
                     <h4>📘 Gestion des Matières</h4>
                     <p>Ajouter, modifier ou supprimer des matières.</p>

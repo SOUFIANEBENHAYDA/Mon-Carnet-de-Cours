@@ -3,6 +3,8 @@ require_once __DIR__ . '/../modele/modele_filiere.php';
 require_once __DIR__ . '/../modele/modele_etudiant.php';
 require_once __DIR__ . '/../modele/modele_admin.php';
 require_once __DIR__ . '/../modele/modele_notes.php';
+require_once __DIR__ . '/../modele/modele_matiere.php';
+require_once __DIR__ . '/../modele/modele_prof.php';
 
 
 
@@ -34,6 +36,10 @@ function add_etudiant(){
 
 function display_filiers(){
     return Filiere::display();
+}
+
+function display_prof(){
+    return Professeur::display();
 }
 
 function create_etudiant(){
@@ -77,5 +83,16 @@ function display_etudiants_par_filiere(){
     ?>
     <?php
 
+}
+
+function ajouter_matiere(){
+    require_once "../view/ajouter_matiere.php";
+
+    if(!empty($_POST["nom"])&&!empty($_POST["ceof"])&&!empty($_POST["idp"])){
+        $matiere=new Matiere($_POST["nom"],$_POST["ceof"],$_POST["idp"]);
+        $matiere->ajouter();
+
+        header("Location: ../view/acceuil_admin.php");
+    }
 }
 ?>
