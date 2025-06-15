@@ -5,6 +5,7 @@ require_once __DIR__ . '/../modele/modele_admin.php';
 require_once __DIR__ . '/../modele/modele_notes.php';
 require_once __DIR__ . '/../modele/modele_matiere.php';
 require_once __DIR__ . '/../modele/modele_prof.php';
+require_once __DIR__."../modele/modele_documents.php";
 
 
 
@@ -74,6 +75,11 @@ function add_note(){
 function verify_note(){
     Note::create_note();
 }
+
+function document_action(){
+
+}
+
 
 //mal9itch kifach ndir liha b view hada lah
 function display_etudiants_par_filiere() {

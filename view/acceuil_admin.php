@@ -80,7 +80,7 @@
             </a>
         </div>
         <div class="col-md-4">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="../view/docs.php" class="text-decoration-none text-dark">
                 <div class="dashboard-box documents">
                     <h4>📎 Documents</h4>
                     <p>Ajouter des fichiers liés aux cours.</p>
