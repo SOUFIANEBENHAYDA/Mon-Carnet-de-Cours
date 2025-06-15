@@ -68,7 +68,8 @@ class Note{
             $stmt = $pdo->prepare("INSERT INTO notes(type_note,valeur,id_etudiant,id_matiere) VALUES(:typen,:valeur,:ide,:idm)");
             $stmt->bindParam(':typen',$_POST['type']);
             $stmt->bindParam(':valeur',$_POST['note']);
-            $stmt->bindParam(':ide',id_etudiant_parNom_action($_POST['nom']));
+            $ide = id_etudiant_parNom_action($_POST['nom']);
+            $stmt->bindParam(':ide',$ide);
             $stmt->bindParam(':idm',$_POST['matiere']);
             $stmt->execute();
         }
