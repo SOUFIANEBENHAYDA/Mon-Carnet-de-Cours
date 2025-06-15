@@ -90,7 +90,8 @@ body{
             </div>
 
             <button type="submit" class="btn btn-submit">Ajouter la matière</button>
-        </form>
+        </form><br>
+        <a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>
     </div>
 
 </body>

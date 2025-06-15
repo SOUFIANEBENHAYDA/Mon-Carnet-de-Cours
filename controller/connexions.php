@@ -31,6 +31,7 @@ function add_etudiant(){
     /////////////////
     $res=display_filiers();
     require_once __DIR__."/../view/ajouter_etudiant_vew.php";
+    create_etudiant();
     
 }
 
@@ -52,6 +53,7 @@ function add_matiere(){
 function create_etudiant(){
     inscrire();
     header('location: ../view/acceuil_admin.php');
+    exit();
 }
 
 function note_admin(){
@@ -139,6 +141,7 @@ function display_etudiants_par_filiere() {
 
         echo "</div>";
     }
+    echo '<a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>';
 
     echo '</div></body></html>';
 }

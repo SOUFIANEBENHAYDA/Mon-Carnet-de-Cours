@@ -167,6 +167,7 @@
           <th>#</th>
           <th>Étudiant</th>
           <th>Matière</th>
+          <th>type de note</th>
           <th>Note</th>
           <th>Action</th>
         </tr>
@@ -175,6 +176,7 @@
         <tr>
           <td>1</td>
           <td>Mariama</td>
+          <td>EFM</td>
           <td>Mathématiques</td>
           <td>18.5</td>
           <td>
@@ -190,7 +192,6 @@
         //had l3iba tani hhhhhh
         require_once "../controller/connexions.php";
         $res=Note::note_etud_display();
-        var_dump($res);
         foreach($res as $r){
           echo'
           <tr>
@@ -212,6 +213,7 @@
         ?>
       </tbody>
     </table>
+    <a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>
   </div>
 
   <script src="../bootstrap/js/bootstrap.js"></script>

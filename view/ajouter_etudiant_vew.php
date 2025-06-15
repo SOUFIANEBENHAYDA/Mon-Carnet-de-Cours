@@ -100,7 +100,7 @@ $res=display_filiers();
                         Ajouter un Nouvel Étudiant
                     </div>
                     <div class="card-body p-5">
-                        <form action="../view/trait_info.php" method="post" enctype="multipart/form-data">
+                        <form action="" method="post" enctype="multipart/form-data">
 
                             <div class="mb-4 text-center">
                                 <div class="photo-placeholder" id="photoPlaceholder">
@@ -179,6 +179,7 @@ $res=display_filiers();
                                 <button type="submit" class="btn btn-gold">Enregistrer</button>
                             </div>
                         </form>
+                        <a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>
                     </div>
                 </div>
             </div>

@@ -108,6 +108,7 @@
             </div>
             <button type="submit" class="btn btn-success">Enregistrer la note</button>
         </form>
+        <a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>
     </div>
 
 </body>

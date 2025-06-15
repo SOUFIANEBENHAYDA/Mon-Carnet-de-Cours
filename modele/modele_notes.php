@@ -72,6 +72,8 @@ class Note{
             $stmt->bindParam(':ide',$ide);
             $stmt->bindParam(':idm',$_POST['matiere']);
             $stmt->execute();
+            header("Location: ../view/note_ad.php");
+            exit();
         }
     }
     //affiche tous les notes dans la base de donnee
