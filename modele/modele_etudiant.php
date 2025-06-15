@@ -177,7 +177,8 @@ function display_pare_filier($f){
     $stat=$pdo->prepare("SELECT * FROM etudiants where id_filiere=:idf");
     $stat->bindParam(":idf", $f);
     $stat->execute();
-    return $stat->fetchAll();
+    $result=$stat->fetchAll();
+    return $result;
 }
 
 ?>
