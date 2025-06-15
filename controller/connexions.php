@@ -1,7 +1,7 @@
 <?php
+require_once __DIR__ . '/../modele/modele_filiere.php';
 require_once __DIR__ . '/../modele/modele_etudiant.php';
 require_once __DIR__ . '/../modele/modele_admin.php';
-require_once __DIR__ . '/../modele/modele_filiere.php';
 require_once __DIR__ . '/../modele/modele_notes.php';
 
 
@@ -26,13 +26,13 @@ function donne_verification(){
 
 //*********** */
 function add_etudiant(){
+    /////////////////
     $res=display_filiers();
     require_once __DIR__."/../view/ajouter_etudiant_vew.php";
     
 }
 
 function display_filiers(){
-    
     return Filiere::display();
 }
 
@@ -53,4 +53,29 @@ function verify_note(){
     Note::create_note();
 }
 
+//mal9itch kifach ndir liha b view hada lah
+function display_etudiants_par_filiere(){
+    $res=display_filiers();
+    foreach($res as $r){
+        echo "
+        <h3>list de filiere {$r['nom']}<h3>
+        <table>
+        <tr><th>Nom et prenom</th><th>email</th><th>telephone</th></tr>
+        ";
+        $etudes=display_pare_filier($r["id_filiere"]);
+        foreach($etudes as $e){
+            echo "
+            <tr><td>{$e['nom']}</td><td>{$e['email']}</td>{$e['tel']}</tr>
+            ";
+            //ila ba9i biti tzid lakhrin 3la 9bl l crud dyalhom
+            
+        }
+        echo "
+        </table>
+        ";
+    }
+    ?>
+    <?php
+
+}
 ?>

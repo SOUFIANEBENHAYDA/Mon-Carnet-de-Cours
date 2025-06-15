@@ -2,33 +2,6 @@
 
 require_once __DIR__."/../modele/connexion_db.php";
 
-function loginEtudiant(){
-    $pdo=connexion_database();
-    $email=$_POST["email"];
-    $stat=$pdo->prepare("SELECT * FROM etudiants where email=:email");
-    $stat->bindParam(":email",$email);
-    $stat->execute();
-    return $stat->fetch();
-}
-
-function loginEtudiant_action(){
-    if(!empty($_POST["email"]) && !empty($_POST["password"])){
-        $res=loginEtudiant();
-        if($res!=false){
-            if($res["mot_de_pass"]===$_POST["password"]){
-                session_start();
-                $etudiant= new Etudiant($res["id_etudiant"], $res["telephone"], $res["nom"], $res["email"], $res["photo"],$res["id_filiere"], $res["mot_de_pass"]);
-                $_SESSION["etudiant"]=$etudiant;
-                header("Location: ../view/acceuil_etudiants.php");
-                exit();
-            }
-        }else{
-            echo "email doesn't exit";
-        }
-    }
-    echo "veullez remplire tous les champs";
-}
-
 class Etudiant{
     private $id_etudiant;
     private $num_etudiant;
@@ -66,6 +39,15 @@ class Etudiant{
     function getId_filiere(){
         return $this->id_filiere;
     }
+    function getFilier(){
+        $res=display_filiers();
+        foreach($res as $r){
+            if($r["id_filiere"]==$this->id_filiere){
+                return $r["nom"];
+                break;
+            }
+        }
+    }
 
 
     function setId_etudiant($id_etudiant){
@@ -89,9 +71,9 @@ class Etudiant{
 
 
 
-    function display(){
+    static function display(){
         $pdo = connexion_database();
-        $stmt = $pdo -> prepare("SELECT * FROM *etudiants");
+        $stmt = $pdo -> prepare("SELECT * FROM etudiants");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -111,6 +93,45 @@ class Etudiant{
 
     
 }
+
+function loginEtudiant(){
+    $pdo=connexion_database();
+    $email=$_POST["email"];
+    $stat=$pdo->prepare("SELECT * FROM etudiants where email=:email");
+    $stat->bindParam(":email",$email);
+    $stat->execute();
+    return $stat->fetch();
+}
+
+function loginEtudiant_action(){
+    if(!empty($_POST["email"]) && !empty($_POST["password"])){
+        $res=loginEtudiant();
+        if($res!=false){
+            if ($_POST["password"]==$res["mot_de_pass"]){
+                session_start();
+                $etudiant= new Etudiant($res["id_etudiant"], $res["telephone"], $res["nom"], $res["email"], $res["photo"],$res["id_filiere"], $res["mot_de_pass"]);
+                $_SESSION["etudiant"]=$etudiant;
+                header("Location: ../view/acceuil_etudiants.php");
+                exit();
+            }else{
+                //echo "<script>alert('mot de pass incorrect')</script>";
+                header("Location: ../view/trait_connexion.php");
+                exit();
+            }
+        }else{
+            //echo "<script>alert('email n'existe pas')</script>";
+            header("Location: ../view/connexion_etudiant.php");
+            exit();
+        }
+    }else{
+        //echo "<script>alert('veullez remplire tous les champs')</script>";
+        header("Location: ../view/connexion_etudiant.php");
+        exit();
+    }
+}
+//les alerts makhdaminch ila drtihom 9bl l header()
+
+
 
 
 function verifier_donne(){
@@ -149,5 +170,13 @@ function inscrire(){
     }
     
 };
+
+//pour affichage de groupes chez l'Admin
+function display_pare_filier($f){
+    $pdo=connexion_database();
+    $stat=$pdo->prepare("SELECT * FROM etudiants where id_filiere=:idf");
+    $stat->bindParam(":idf", $f);
+    return $stat->fetchAll();
+}
 
 ?>

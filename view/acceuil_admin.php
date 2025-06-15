@@ -104,7 +104,7 @@
             </a>
         </div>
         <div class="col-md-4">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="../view/list_etudiant.php" class="text-decoration-none text-dark">
                 <div class="dashboard-box liste">
                     <h4>📄 Liste des Étudiants</h4>
                     <p>Voir tous les étudiants inscrits avec leurs informations.</p>

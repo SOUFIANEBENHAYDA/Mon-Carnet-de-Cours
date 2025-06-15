@@ -2,11 +2,18 @@
 <html lang="fr">
 
     <?php
+    //require_once "../modele/modele_etudiant.php"; wayak t7ayd l comment hhhh
+    require_once "../controller/connexions.php";
+    
     session_start();
     if(!isset($_SESSION["etudiant"])){
-      header("Location: ../index.php");
+      header("Location: ../view/connexion_etudiant.php");
       exit();
+    }else{
+      $etud=$_SESSION["etudiant"];
     }
+
+
     ?>
 
 <head>
@@ -270,16 +277,11 @@
     </div>
     <div class="user-profile">
       <div class="user-info">
-        <div class="user-name">Nom</div>
-        <div class="user-role">Filière</div>
-<!-- photo dynamique-->
-    <?php
-    //$path=$_SESSION["etudiant"]->getPhoto();
-    ?>
- 
+        <div class="user-name"><?php echo $etud->getNom(); ?></div>
+        <div class="user-role"><?php echo $etud->getFilier(); ?></div>
       </div>
 
-      <img src="<?php echo $path ; ?>" alt="Photo de profil" class="user-avatar" />
+      <img src="<?php echo $etud->getPhoto() ; ?>" alt="Photo de profil" class="user-avatar" />
     </div>
   </header>
 

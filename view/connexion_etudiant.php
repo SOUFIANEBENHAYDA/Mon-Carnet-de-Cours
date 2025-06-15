@@ -37,7 +37,7 @@
                     <label for="password">Mot de passe</label>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <input type="password" id="password" name="password" placeholder="" required>
                         <i class="fas fa-eye toggle-password" id="togglePassword"></i>
                     </div>
                 </div>
