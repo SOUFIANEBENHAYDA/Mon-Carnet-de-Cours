@@ -124,37 +124,105 @@ function display_etudiants_par_filiere() {
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Liste des Étudiants par Filière</title>
+        <title>Étudiants par Filière - EduTrack</title>
         <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
         <style>
+            :root {
+                --bleu: #003973;
+                --or: #d4af37;
+                --or-hover: #e8c766;
+                --gris-clair: #f8f9fa;
+                --blanc: #ffffff;
+            }
+
             body {
-                background: #f0f2f5;
-                font-family: Arial, sans-serif;
-                padding-top: 40px;
-                padding-bottom: 40px;
+                background-color: var(--gris-clair);
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                padding-top: 50px;
             }
+
             .container {
-                max-width: 900px;
+                max-width: 1000px;
+                margin: 0 auto;
             }
+
+            .top-btn {
+                display: flex;
+                justify-content: flex-end;
+                margin-bottom: 30px;
+            }
+
+            .filiere-card {
+                background-color: var(--blanc);
+                border-radius: 12px;
+                padding: 25px;
+                margin-bottom: 40px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+                border-left: 5px solid var(--bleu);
+            }
+
             h3 {
-                color: #003973;
+                color: var(--bleu);
+                margin-bottom: 20px;
+            }
+
+            .btn-custom {
+                background-color: var(--or);
+                border: none;
+                color: #000;
+                font-weight: 600;
+                padding: 10px 20px;
+                border-radius: 8px;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+            }
+
+            .btn-custom:hover {
+                background-color: var(--or-hover);
+                color: #000;
+            }
+
+            .bottom-btn {
+                text-align: center;
+                margin-top: 50px;
+            }
+
+            .table thead {
+                background-color: var(--bleu);
+                color: white;
+            }
+
+            .table tbody tr:hover {
+                background-color: #f1f1f1;
+            }
+
+            .alert-warning {
+                background-color: #fff3cd;
+                color: #856404;
+                border: 1px solid #ffeeba;
+                border-radius: 6px;
+                padding: 12px;
             }
         </style>
     </head>
     <body>
-        <div class="container">';
+        <div class="container">
+            <div class="top-btn">
+                <a href="../view/ajouter_etudiant.php" class="btn btn-custom">+ Ajouter Étudiant</a>
+            </div>
+    ';
 
     foreach ($res as $r) {
-        echo "<div class='my-5 p-4 bg-white shadow rounded'>";
-        echo "<h3 class='mb-4'>Étudiants de la filière : <strong>{$r['nom']}</strong></h3>";
+        echo "<div class='filiere-card'>";
+        echo "<h3>Étudiants de la filière : <strong>{$r['nom']}</strong></h3>";
 
         $etudes = display_pare_filier($r["id_filiere"]);
 
         if (!empty($etudes)) {
             echo "
                 <div class='table-responsive'>
-                    <table class='table table-bordered table-striped'>
-                        <thead class='table-dark'>
+                    <table class='table table-bordered'>
+                        <thead>
                             <tr>
                                 <th>Nom et prénom</th>
                                 <th>Email</th>
@@ -178,16 +246,21 @@ function display_etudiants_par_filiere() {
                 </div>
             ";
         } else {
-            echo "<div class='alert alert-warning'>Aucun étudiant trouvé dans cette filière.</div>";
+            echo "<div class='alert alert-warning mt-3'>Aucun étudiant trouvé dans cette filière.</div>";
         }
 
         echo "</div>";
     }
-    echo '<a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>';
-    echo '<button class="btn btn-warning"> <a href="../view/ajouter_etudiant.php">+ Ajouter Etudiant</a></button>';
 
-    echo '</div></body></html>';
+    echo '
+        <div class="bottom-btn">
+            <a href="../view/acceuil_admin.php" class="btn btn-dark">← Retour à l\'accueil</a>
+        </div>
+        </div>
+    </body>
+    </html>';
 }
+
 /*
 function ajouter_matiere(){
     require_once "../view/ajouter_matiere.php";

@@ -89,6 +89,9 @@ $res=display_filiers();
             font-size: 2rem;
             color: var(--gris);
         }
+        a{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -175,11 +178,11 @@ $res=display_filiers();
 
 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                                <button type="reset" class="btn btn-outline-secondary me-md-2">Annuler</button>
+                                <a href="../view/acceuil_admin.php"  class="btn btn-outline-secondary me-md-2">Annuler</a>
                                 <button type="submit" class="btn btn-gold">Enregistrer</button>
                             </div>
                         </form>
-                        <a href="../view/acceuil_admin.php" class="btn btn-dark">Go back to acceuil_admin</a>
+                        
                     </div>
                 </div>
             </div>
