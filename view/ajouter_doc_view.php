@@ -1,25 +1,241 @@
+<?php
+// Supposé que $res est défini avec les matières
+?>
 <!DOCTYPE html>
-<html>
-    <body>
-        <form action="./ajouter_document.php" method="post" enctype="multipart/form-data">
-            <label for="titre">Titre de document</label>    
-            <input type="text" name="titre" required>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ajouter un Document</title>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="../fontawesome-free-6.7.1-web/css/all.css"/>
+  <style>
+    :root {
+      --bleu: #003973;
+      --bleu-light: #0056b3;
+      --beige: #f5f5ee;
+      --or: #d4af37;
+      --or-hover: #e8c766;
+      --gris: #6c757d;
+      --success: #28a745;
+    }
 
-            <label for="fichier">ajouter fichier</label>
-            <input type="file" name="fichier" accept="application/pdf" required>
+    body {
+      background: url('../Images/background_admin.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-            <label for="id_matiere">Matiere</label>
-            <select name="id_matiere">
-                <option value="" disabled>choisir une matiere</option>
-                <?php 
-                foreach ($res as $r){
-                    echo "
-                    <option value='".$r['id_matiere']."'>".$r['nom']."</option>
-                    ";
-                }
-                ?>
-            </select>
-            <button type="submit">Ajouter</button>
-        </form>
-    </body>
+    .form-box {
+      background-color: rgba(255, 255, 255, 0.97);
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      max-width: 500px;
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .form-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .form-box h2 {
+      text-align: center;
+      color: var(--bleu);
+      margin-bottom: 1.8rem;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .form-box h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--or);
+      border-radius: 3px;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--bleu);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    label i {
+      font-size: 0.9em;
+      color: var(--gris);
+    }
+
+    .form-control {
+      border-radius: 8px;
+      padding: 12px 15px;
+      border: 1px solid #ced4da;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--or);
+      box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+    }
+
+    .custom-file-input {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .custom-file-input input[type="file"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .file-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background-color: #f8f9fa;
+      border: 1px dashed #ced4da;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .file-label:hover {
+      border-color: var(--or);
+      background-color: #fff;
+    }
+
+    .file-text {
+      color: var(--gris);
+    }
+
+    .file-selected {
+      color: var(--bleu);
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .btn-submit {
+      background-color: var(--or);
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-submit:hover {
+      background-color: var(--or-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url(../Images/check.svg);
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 15px;
+      padding-right: 40px;
+    }
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.1s; }
+    .form-group:nth-child(2) { animation-delay: 0.2s; }
+    .form-group:nth-child(3) { animation-delay: 0.3s; }
+    .btn-submit { animation: fadeIn 0.5s ease 0.4s forwards; }
+
+    @media (max-width: 576px) {
+      .form-box {
+        padding: 1.5rem;
+        margin: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Ajouter un Document</h2>
+    <form action="./ajouter_document.php" method="post" enctype="multipart/form-data">
+      <div class="mb-4 form-group">
+        <label for="titre"><i class="fas fa-heading"></i> Titre du document</label>
+        <input type="text" name="titre" id="titre" class="form-control" placeholder="Ex : Cours de PHP - Partie 1" required>
+      </div>
+
+      <div class="mb-4 form-group">
+        <label for="fichier"><i class="fas fa-file-pdf"></i> Fichier PDF</label>
+        <div class="custom-file-input">
+          <label class="file-label" for="fichier">
+            <span class="file-text"><i class="fas fa-cloud-upload-alt"></i> Choisir un fichier</span>
+            <span class="badge bg-secondary">PDF uniquement</span>
+          </label>
+          <input type="file" name="fichier" id="fichier" class="form-control d-none" accept="application/pdf" required>
+          <div id="file-selected" class="file-selected"></div>
+        </div>
+      </div>
+
+      <div class="mb-4 form-group">
+        <label for="id_matiere"><i class="fas fa-book"></i> Matière</label>
+        <select name="id_matiere" id="id_matiere" class="form-control" required>
+          <option value="" disabled selected>-- Sélectionnez une matière --</option>
+          <?php
+          foreach ($res as $r) {
+              echo "<option value='" . $r['id_matiere'] . "'>" . $r['nom'] . "</option>";
+          }
+          ?>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-submit">
+        <i class="fas fa-plus-circle"></i> Ajouter le document
+      </button>
+    </form>
+  </div>
+
+  
+
+</body>
 </html>
