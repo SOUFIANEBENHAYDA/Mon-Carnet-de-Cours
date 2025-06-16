@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin - Liste des Étudiants</title>
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="../fontawesome-free-6.7.1-web/fontawesome-free-6.7.1-web/css/all.css">
+  <link rel="stylesheet" href="../fontawesome-free-6.7.1-web/css/all.css">
   <style>
     :root {
       --bleu: #003973;
