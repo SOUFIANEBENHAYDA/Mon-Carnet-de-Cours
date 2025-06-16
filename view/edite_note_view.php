@@ -74,12 +74,13 @@
             <h3>Ajouter une Note</h3>
         </div>
 
-        <form action="../view/trait_info.php" method="post">
+        <form action="../view/trait_edite_info.php" method="post">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom d'Étudiant</label>
                 <input type="text" name="nom" id="nom" value="<?php echo $_GET['nom_etud'] ?>" placeholder="Nom" class="form-control" required>
             </div>
 
+            <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
             <div class="mb-3">
                 <label for="matiere" class="form-label">Matière</label>
                 <select id="matiere" name="matiere" class="form-control"  required>
