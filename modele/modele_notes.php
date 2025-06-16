@@ -76,7 +76,7 @@ class Note{
             exit();
         }
     }
-    static function edite_note_by_id($id){
+    static function edite_note_by_id(){
         $pdo = connexion_database();
         if(isset($_POST['nom'])&&isset($_POST['matiere'])&&isset($_POST['type'])&&isset($_POST['note'])){
             $stmt = $pdo->prepare("UPDATE notes SET type_note = :typen, valeur = :valeur, id_etudiant = :ide, id_matiere = :idm WHERE id_note = :id;");
@@ -85,7 +85,7 @@ class Note{
             $ide = id_etudiant_parNom_action($_POST['nom']);
             $stmt->bindParam(':ide',$ide);
             $stmt->bindParam(':idm',$_POST['matiere']);
-            $stmt->bindParam(':id',$$_POST['id']);
+            $stmt->bindParam(':id',$_POST['id']);
             $stmt->execute();
             header("Location: ../view/note_ad.php");
             exit();

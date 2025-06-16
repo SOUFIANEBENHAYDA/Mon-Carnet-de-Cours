@@ -75,15 +75,15 @@ function add_note(){
     require_once __DIR__.'/../view/ajouter_note.php';
 }
 function edite_note(){
-    if(!empty($_GET["ide"])&&!empty($_GET["nom_etud"])&&!empty($_GET["matiere"])&&!empty($_GET["type"])&&!empty($_GET["note"])){
+    if(!empty($_GET["id"]) && !empty($_GET["nom_etud"]) && !empty($_GET["matiere"]) && !empty($_GET["type"]) && !empty($_GET["note"])){
         //$res=Note::note_etud_display();
-        require_once __DIR__.'../view/edite_note_view.php';
+        require_once __DIR__.'/../view/edite_note_view.php';
 
     }
 
 }
 function edite_note_action(){
-    Note::edite_note_by_id($_GET["id"]);
+    Note::edite_note_by_id();
 }
 
 function note_destroy(){
