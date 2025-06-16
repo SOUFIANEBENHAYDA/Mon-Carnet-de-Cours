@@ -83,12 +83,41 @@ class Etudiant{
     function create(){
         $pdo = connexion_database();
     }
-    function edit(){
+    static function edit(){
         $pdo = connexion_database();
-    }
-    function destroy(){
-        $pdo = connexion_database();
+        if (!empty($_POST["nom"]) && !empty($_POST["tele"]) && !empty($_POST["email"]) && !empty($_POST["genre"]) &&
+    !empty($_POST["date_nais"]) && !empty($_POST["niveau"]) && !empty($_FILES["photo"]) &&
+    !empty($_POST["filiere"]) && !empty($_POST["password"]) && !empty($_POST["id"])) {
+    
+    $dossier = "../photos/";
+    $nomImage = $_FILES['photo']['name'];
+    $cheminImage = $dossier . $nomImage;
 
+    if (move_uploaded_file($_FILES['photo']['tmp_name'], $cheminImage)) {
+
+        $stat = $pdo->prepare("UPDATE etudiants SET nom = :nom, telephone = :tel, email = :email, genre = :genre, date_nissance = :dn, photo = :photo, id_filiere = :idf, mot_de_pass = :pwd, niveau = :niveau WHERE id_etudiant = :id");
+
+        $stat->bindParam(":nom", $_POST["nom"]);
+        $stat->bindParam(":tel", $_POST["tele"]);
+        $stat->bindParam(":email", $_POST["email"]);
+        $stat->bindParam(":genre", $_POST["genre"]);
+        $stat->bindParam(":dn", $_POST["date_nais"]);
+        $stat->bindParam(":niveau", $_POST["niveau"]);
+        $stat->bindParam(":photo", $cheminImage);
+        $stat->bindParam(":idf", $_POST["filiere"]);
+        $stat->bindParam(":pwd", $_POST["password"]);
+        $stat->bindParam(":id", $_POST["id"]);
+
+        $stat->execute();
+    }
+}
+
+    }
+    static function destroy(){
+        $pdo = connexion_database();
+        $stat=$pdo->prepare("DELETE FROM etudiants WHERE id_etudiant = :id");
+        $stat->bindParam(":id", $_GET["id"]);
+        $stat->execute();
     }
 
     

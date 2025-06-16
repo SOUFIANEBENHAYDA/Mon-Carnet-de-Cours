@@ -72,6 +72,17 @@ function id_etudiant_parNom_action($nom){
     return $id_nom;
 }
 
+function delete_etudiant(){
+    Etudiant::destroy();
+    header("Location: ../view/edite_etudiant_view.php");
+}
+
+
+function edite_etudiant(){
+    require_once "../view/edite_etudiant_view.php";
+    Etudiant::edit();
+}
+
 function add_note(){
     $res=Note::note_etud_display();
     require_once __DIR__.'/../view/ajouter_note.php';
@@ -100,6 +111,7 @@ function forum_distroy(){
 function delete_forums_all(){
     EspaceEtudiant::destroy_All();
     header('location: ../view/afficher_espace.php');
+
 }
 
 function note_destroy(){
@@ -133,7 +145,7 @@ function ajouter_doc(){
         $doc = new Documents($_POST["titre"], $fichier, $_POST["id_matiere"]);
         $doc->ajouter();
     }
-
+    
     // Load matieres and the view
     $res = Matiere::display();
     require_once "../view/ajouter_doc_view.php";
@@ -286,12 +298,15 @@ function display_etudiants_par_filiere() {
                                 <td>{$e['genre']}</td>
                                 <td>{$e['date_nissance']}</td>
                                 <td>{$e['niveau']}</td>";
-                                echo '<td> <button class="btn btn-sm btn-outline-warning btn-action" title="Modifier">
-                                                <i class="fas fa-pen"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger btn-action" title="Supprimer">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button></td>';
+                                echo '<td>
+                                        <button class="btn btn-sm btn-outline-warning btn-action" title="Modifier"><a href="edite_etudiant.php?
+                                        
+                                        id='.$e["id_etudiant"].'&telephone='.$e["telephone"].'&nom='.$e["nom"].'&email='.$e["email"].                                                                                            
+                                        '&genre='.$e["genre"].'&date_naissance='.$e["date_nissance"].'&niveau='.$e["niveau"].'&photo='
+                                        .$e["photo"].'&mo_de_pass='.$e["mot_de_pass"].'&id_filiere='.$r["id_filiere"].'"
+                                        
+                                        class="fas fa-pen"></a></button>
+                                        <button class="btn btn-sm btn-outline-danger btn-action" title="Supprimer"><a href="delete_etudiant.php?id='.$e["id_etudiant"].'" class="fas fa-trash-alt"></a></button></td>';
                                 
                                 echo"</tr>";
             }
