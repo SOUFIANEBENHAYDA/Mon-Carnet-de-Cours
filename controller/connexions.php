@@ -145,8 +145,7 @@ function espace(){
 
 function espace_etu(){
     EspaceEtudiant::create();
-    require_once __DIR__. '/../view/espace';
-    //header('location: ../view/espace_colab.php');
+    require_once __DIR__. '/../view/acceuil_etudiants.php';
 }
 
 

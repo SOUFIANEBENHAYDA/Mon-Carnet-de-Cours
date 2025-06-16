@@ -64,8 +64,6 @@ class EspaceEtudiant{
     }
     static function create(){
     $pdo = connexion_database();
-
-
     $stmt = $pdo->prepare("SELECT id_etudiant FROM etudiants WHERE nom = :nom");
     $stmt->bindParam(':nom', $_POST['nom']);
     $stmt->execute();
@@ -75,12 +73,15 @@ class EspaceEtudiant{
         $stat = $pdo->prepare("INSERT INTO posts_forum (contenu, id_etudiant, email) VALUES(:contenu, :id_etudiant, :email)");
         $stat->bindParam(':contenu', $_POST['contenu']);
         $stat->bindParam(':email', $_POST['email']);
-        $stat->bindParam(':id_etudiant', $res['id']);
+        $stat->bindParam(':id_etudiant', $res['id_etudiant']);
         $stat->execute();
+        echo "<script>alert('Le contenu a été envoyer avec success')</script>";
     } else {
         echo "Aucun étudiant trouvé avec ce nom.";
+        }
     }
-}
+
+
 
     function edit(){
         $pdo = connexion_database();
