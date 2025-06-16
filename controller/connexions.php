@@ -9,6 +9,7 @@ require_once __DIR__ . '/../modele/modele_notes.php';
 require_once __DIR__ . '/../modele/modele_matiere.php';
 require_once __DIR__ . '/../modele/modele_prof.php';
 require_once __DIR__ . '/../modele/modele_documents.php';
+require_once __DIR__ . '/../modele/modele_espace.php';
 
 
 
@@ -87,6 +88,14 @@ function edite_note_action(){
     Note::edite_note_by_id();
 }
 
+
+function forum_distroy(){
+    if(!empty($_GET["id"])){
+        EspaceEtudiant::destroy($_GET["id"]);
+        header("Location: ../view/afficher_espace.php");
+        exit();
+    }
+}
 function note_destroy(){
     if(!empty($_GET["id"])){
         Note::destroy($_GET["id"]);
