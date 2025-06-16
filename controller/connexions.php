@@ -56,8 +56,9 @@ function add_matiere(){
 
 function create_etudiant(){
     inscrire();
-    header('location: ../view/acceuil_admin.php');
-    exit();
+    //*************** */
+    
+    
 }
 
 function note_admin(){
