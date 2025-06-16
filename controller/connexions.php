@@ -138,6 +138,11 @@ function document_display_action(){
     require_once "../view/doc_view.php";
 }
 
+function delete_docs(){
+    Documents::destroy();
+    header("Location: ../view/docs.php");
+}
+
 function ajouter_doc(){
     if(!empty($_POST["titre"]) && !empty($_POST["id_matiere"]) && isset($_FILES["fichier"])) {
         $fichier = "../uploaded_docs/" . $_FILES["fichier"]["name"];

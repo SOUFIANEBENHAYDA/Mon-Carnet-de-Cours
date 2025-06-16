@@ -67,8 +67,11 @@ class Documents{
     function edit(){
         $pdo = connexion_database();
     }
-    function destroy(){
+    static function destroy(){
         $pdo = connexion_database();
+        $stat=$pdo->prepare("DELETE FROM documents WHERE id_document=:id");
+        $stat->bindParam(":id", $_GET["id"]);
+        $stat->execute();
     }
 }
 
