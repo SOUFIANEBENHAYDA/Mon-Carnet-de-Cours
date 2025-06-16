@@ -139,6 +139,16 @@ function ajouter_doc(){
     require_once "../view/ajouter_doc_view.php";
 }
 
+function espace(){
+    require_once __DIR__. '/../view/espace_colab.php';
+}
+
+function espace_etu(){
+    EspaceEtudiant::create();
+    require_once __DIR__. '/../view/espace';
+    //header('location: ../view/espace_colab.php');
+}
+
 
 //mal9itch kifach ndir liha b view hada lah
 function display_etudiants_par_filiere() {
