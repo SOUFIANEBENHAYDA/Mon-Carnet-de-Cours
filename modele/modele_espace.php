@@ -62,17 +62,35 @@ class EspaceEtudiant{
         return $forum;
         
     }
-    function create(){
-        
+    static function create(){
+    $pdo = connexion_database();
+    $stmt = $pdo->prepare("SELECT id_etudiant FROM etudiants WHERE nom = :nom");
+    $stmt->bindParam(':nom', $_POST['nom']);
+    $stmt->execute();
+    $res = $stmt->fetch();
+
+    if ($res) {
+        $stat = $pdo->prepare("INSERT INTO posts_forum (contenu, id_etudiant, email) VALUES(:contenu, :id_etudiant, :email)");
+        $stat->bindParam(':contenu', $_POST['contenu']);
+        $stat->bindParam(':email', $_POST['email']);
+        $stat->bindParam(':id_etudiant', $res['id_etudiant']);
+        $stat->execute();
+        echo "<script>alert('Le contenu a été envoyer avec success')</script>";
+    } else {
+        echo "Aucun étudiant trouvé avec ce nom.";
+        }
     }
+
+
+
     function edit(){
         $pdo = connexion_database();
     }
     static function destroy($id){
-        $pdo = connexion_database();
-        $stat=$pdo->prepare("DELETE FROM posts_forum WHERE id_post=:id");
-        $stat->bindParam(":id", $id);
-        $stat->execute();
+    $pdo = connexion_database();
+    $stat = $pdo->prepare("DELETE FROM posts_forum WHERE id_post = :id");
+    $stat->bindParam(":id", $id);
+    $stat->execute();
     }
 
     static function destroy_All(){

@@ -90,7 +90,7 @@ function edite_note_action(){
 
 
 function forum_distroy(){
-    if(!empty($_GET["id"])){
+    if (!empty($_GET["id"])) {
         EspaceEtudiant::destroy($_GET["id"]);
         header("Location: ../view/afficher_espace.php");
         exit();
@@ -137,6 +137,15 @@ function ajouter_doc(){
     // Load matieres and the view
     $res = Matiere::display();
     require_once "../view/ajouter_doc_view.php";
+}
+
+function espace(){
+    require_once __DIR__. '/../view/espace_colab.php';
+}
+
+function espace_etu(){
+    EspaceEtudiant::create();
+    require_once __DIR__. '/../view/acceuil_etudiants.php';
 }
 
 
