@@ -90,7 +90,7 @@ function edite_note_action(){
 
 
 function forum_distroy(){
-    if(!empty($_GET["id"])){
+    if (!empty($_GET["id"])) {
         EspaceEtudiant::destroy($_GET["id"]);
         header("Location: ../view/afficher_espace.php");
         exit();

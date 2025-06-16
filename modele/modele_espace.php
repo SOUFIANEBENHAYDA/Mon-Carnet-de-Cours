@@ -87,10 +87,10 @@ class EspaceEtudiant{
         $pdo = connexion_database();
     }
     static function destroy($id){
-        $pdo = connexion_database();
-        $stat=$pdo->prepare("DELETE FROM posts_forum WHERE id_post=:id");
-        $stat->bindParam(":id", $id);
-        $stat->execute();
+    $pdo = connexion_database();
+    $stat = $pdo->prepare("DELETE FROM posts_forum WHERE id_post = :id");
+    $stat->bindParam(":id", $id);
+    $stat->execute();
     }
 
     static function destroy_All(){
