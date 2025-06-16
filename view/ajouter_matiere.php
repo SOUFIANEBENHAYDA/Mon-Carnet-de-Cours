@@ -10,7 +10,7 @@
             --accent-or: #d4af37;
             --accent-or-hover: #e8c766;
         }
-body{
+        body{
         display: flex;
         justify-content: center;
         align-items: center;
