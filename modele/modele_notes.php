@@ -79,7 +79,7 @@ class Note{
     static function edite_note_by_id(){
         $pdo = connexion_database();
         if(isset($_POST['nom'])&&isset($_POST['matiere'])&&isset($_POST['type'])&&isset($_POST['note'])){
-            $stmt = $pdo->prepare("UPDATE notes SET type_note = :typen, valeur = :valeur, id_etudiant = :ide, id_matiere = :idm WHERE id_note = :id;");
+            $stmt = $pdo->prepare("UPDATE notes SET type_note=:typen, valeur=:valeur, id_etudiant=:ide, id_matiere=:idm WHERE id_note=:id;");
             $stmt->bindParam(':typen',$_POST['type']);
             $stmt->bindParam(':valeur',$_POST['note']);
             $ide = id_etudiant_parNom_action($_POST['nom']);
