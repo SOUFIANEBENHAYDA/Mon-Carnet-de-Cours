@@ -85,7 +85,7 @@
             <div class="mb-3">
                 <label for="matiere" class="form-label">Matière</label>
                 <select id="matiere" name="matiere" class="form-control"  required>
-                    <option value="<?php echo $_GET['matiere'] ?>" selected><?php echo $_GET['matiere'] ?></option>
+                    
                     <?php
                     $res = Matiere::display();
                     foreach($res as $ligne){
