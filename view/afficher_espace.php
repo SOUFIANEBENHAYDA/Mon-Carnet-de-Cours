@@ -96,6 +96,11 @@
 </head>
 <body>
     <div class="container-collab">
+        <div class="text-end mb-3">
+            <a href="../view/delete_forum_all.php" class="btn btn-danger" onclick="return confirm('⚠️ Êtes-vous sûr de vouloir supprimer tous les messages ?');">
+            🗑️ Supprimer Tous
+            </a>
+    </div>
         <h2>📬 Espace Collaboratif - Admin</h2>
         <?php if(!empty($res)): ?>
         <?php foreach ($res as $post): ?>

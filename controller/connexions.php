@@ -96,6 +96,12 @@ function forum_distroy(){
         exit();
     }
 }
+
+function delete_forums_all(){
+    EspaceEtudiant::destroy_All();
+    header('location: ../view/afficher_espace.php');
+}
+
 function note_destroy(){
     if(!empty($_GET["id"])){
         Note::destroy($_GET["id"]);

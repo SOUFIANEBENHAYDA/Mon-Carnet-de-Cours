@@ -75,6 +75,12 @@ class EspaceEtudiant{
         $stat->execute();
     }
 
+    static function destroy_All(){
+        $pdo = connexion_database();
+        $stat=$pdo->prepare("DELETE  FROM posts_forum");
+        $stat->execute();
+    }
+
 }
 
 
