@@ -162,7 +162,7 @@ function inscrire(){
             $stat->bindParam(":pwd", $_POST["password"]);
             $stat->execute();
             
-            //header("Location:")
+            //header("Location: ../view/list_etudiant.php");
         }
         else{
             echo "error";

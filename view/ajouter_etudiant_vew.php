@@ -110,7 +110,7 @@ $res=display_filiers();
                                     <i class="bi bi-camera photo-icon"></i>
                                     <img id="previewImage" src="#" alt="Preview" style="display: none; width: 100%; height: 100%; object-fit: cover;">
                                 </div>
-                                <input type="file" id="photoInput" accept="image/*" class="d-none" name="photo">
+                                <input type="file" id="photoInput" accept="image/*" class="d-none" name="photo" required>
                                 <small class="text-muted">Cliquez pour ajouter une photo</small>
                             </div>
 
@@ -121,18 +121,18 @@ $res=display_filiers();
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="telephone" class="form-label">Téléphone</label>
-                                    <input type="tel" class="form-control" id="telephone" name="tele">
+                                    <input type="tel" class="form-control" id="telephone" name="tele" required>
                                 </div>
                             </div>
 
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-3">
                                     <label for="dateNaissance" class="form-label">Date de naissance</label>
-                                    <input type="date" class="form-control" id="dateNaissance" name="date_nais">
+                                    <input type="date" class="form-control" id="dateNaissance" name="date_nais" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="genre" class="form-label">Genre</label>
-                                    <select class="form-select" id="genre" name="genre">
+                                    <select class="form-select" id="genre" name="genre" required>
                                         <option selected disabled>Choisir...</option>
                                         <option value="M">Masculin</option>
                                         <option value="F">Féminin</option>

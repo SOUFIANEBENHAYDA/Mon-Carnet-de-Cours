@@ -106,8 +106,8 @@
     <h2>🎓 Liste des Étudiants</h2>
 
     <div class="d-flex justify-content-between mb-3">
-      <a href="admin_dashboard.html" class="btn btn-secondary">← Retour</a>
-      <button class="btn btn-ajouter">+ Ajouter un étudiant</button>
+      <a href="../view/acceuil_admin.php" class="btn btn-secondary">← Retour</a>
+      <a class="btn btn-ajouter" href="../view/ajouter_etudiant.php">+ Ajouter un étudiant</a>
     </div>
 
     <table>

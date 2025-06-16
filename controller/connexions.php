@@ -149,6 +149,7 @@ function display_etudiants_par_filiere() {
         <meta charset="UTF-8">
         <title>Étudiants par Filière - EduTrack</title>
         <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="../fontawesome-free-6.7.1-web/css/all.css">
         <style>
             :root {
                 --bleu: #003973;
@@ -249,19 +250,41 @@ function display_etudiants_par_filiere() {
                             <tr>
                                 <th>Nom et prénom</th>
                                 <th>Email</th>
-                                <th>Téléphone</th>
+                                <th>Telephone</th>
+                                <th>Genre</th>
+                                <th>Date de Naissance</th>
+                                <th>Niveau</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
             ";
+            $niv1=0;
+            $niv2=0;
             foreach ($etudes as $e) {
+                if($e['niveau']==1 && $niv1==0){
+                    echo "<tr><td colspan=7><h4>Premier niveau</h4></td></tr>";
+                    $niv1++;
+                }else if($e['niveau']==2 && $niv2==0){
+                    echo "<tr><td colspan=7><h4>deuxième niveau</h4></td></tr>";
+                    $niv2++;
+                }
                 echo "
                             <tr>
                                 <td>{$e['nom']}</td>
                                 <td>{$e['email']}</td>
                                 <td>{$e['telephone']}</td>
-                            </tr>
-                ";
+                                <td>{$e['genre']}</td>
+                                <td>{$e['date_nissance']}</td>
+                                <td>{$e['niveau']}</td>";
+                                echo '<td> <button class="btn btn-sm btn-outline-warning btn-action" title="Modifier">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger btn-action" title="Supprimer">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button></td>';
+                                
+                                echo"</tr>";
             }
             echo "
                         </tbody>
