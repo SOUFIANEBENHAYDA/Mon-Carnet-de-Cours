@@ -88,7 +88,7 @@
             </a>
         </div>
         <div class="col-md-4">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="../view/lien_forum.php" class="text-decoration-none text-dark">
                 <div class="dashboard-box forum">
                     <h4>💬 Forum Étudiant</h4>
                     <p>Consulter ou modérer les messages du mini-forum.</p>

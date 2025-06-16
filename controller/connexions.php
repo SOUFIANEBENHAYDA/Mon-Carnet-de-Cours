@@ -99,6 +99,13 @@ function verify_note(){
     Note::create_note();
 }
 
+function forum_display(){
+    $res = EspaceEtudiant::display();
+    require_once __DIR__. '/../view/afficher_espace.php';
+}
+
+
+
 function document_display_action(){
     $res=Documents::display();
     require_once "../view/doc_view.php";

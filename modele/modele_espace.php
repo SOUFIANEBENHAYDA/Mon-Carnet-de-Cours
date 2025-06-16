@@ -53,13 +53,13 @@ class EspaceEtudiant{
         $this->id_matiere=$id_matiere;
     }
 
-
-    function display(){
-        $pdo = connexion_database();
-        $stmt = $pdo -> prepare("SELECT * FROM posts_forum");
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+    /*vueeeeeeeeeeeeeee */
+    static function display(){
+        $pdo=connexion_database();
+        $stat=$pdo->prepare('SELECT p.contenu as contenu , p.email as "email", e.nom as "nom_etud" FROM etudiants e INNER JOIN posts_forum p ON e.id_etudiant=p.id_etudiant');
+        $stat->execute();
+        $forum=$stat->fetchAll();
+        return $forum;
         
     }
     function create(){
