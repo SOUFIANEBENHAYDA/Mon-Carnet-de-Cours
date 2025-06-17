@@ -162,167 +162,183 @@ function display_etudiants_par_filiere() {
     <head>
         <meta charset="UTF-8">
         <title>Étudiants par Filière - EduTrack</title>
-        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="../fontawesome-free-6.7.1-web/css/all.css">
         <style>
             :root {
                 --bleu: #003973;
+                --beige: #f5f5ee;
                 --or: #d4af37;
                 --or-hover: #e8c766;
-                --gris-clair: #f8f9fa;
-                --blanc: #ffffff;
             }
 
             body {
-                background-color: var(--gris-clair);
-                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-                padding-top: 50px;
-            }
-
-            .container {
-                max-width: 1000px;
-                margin: 0 auto;
-            }
-
-            .top-btn {
                 display: flex;
-                justify-content: flex-end;
-                margin-bottom: 30px;
+                justify-content: center;
+                align-items: flex-start;
+                min-height: 100vh;
+                background: url("../images/background_admin.png") no-repeat center center;
+                background-size: cover;
+                margin: 0;
+                padding: 40px 20px;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             }
 
-            .filiere-card {
-                background-color: var(--blanc);
-                border-radius: 12px;
-                padding: 25px;
-                margin-bottom: 40px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-                border-left: 5px solid var(--bleu);
+            .container-etudiants {
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                max-width: 1200px;
+                width: 100%;
             }
 
-            h3 {
-                color: var(--bleu);
-                margin-bottom: 20px;
-            }
-
-            .btn-custom {
-                background-color: var(--or);
-                border: none;
-                color: #000;
-                font-weight: 600;
-                padding: 10px 20px;
-                border-radius: 8px;
-                text-decoration: none;
-                transition: background-color 0.3s ease;
-            }
-
-            .btn-custom:hover {
-                background-color: var(--or-hover);
-                color: #000;
-            }
-
-            .bottom-btn {
+            h2 {
                 text-align: center;
-                margin-top: 50px;
+                color: var(--bleu);
+                margin-bottom: 40px;
             }
 
-            .table thead {
+            .btn-ajouter {
+                background-color: var(--or);
+                color: #000;
+                font-weight: bold;
+            }
+
+            .btn-ajouter:hover {
+                background-color: var(--or-hover);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            thead tr {
                 background-color: var(--bleu);
                 color: white;
             }
 
-            .table tbody tr:hover {
-                background-color: #f1f1f1;
+            th, td {
+                text-align: center;
+                padding: 12px 14px;
+                border-bottom: 1px solid #ddd;
             }
 
-            .alert-warning {
-                background-color: #fff3cd;
-                color: #856404;
-                border: 1px solid #ffeeba;
-                border-radius: 6px;
-                padding: 12px;
+            tbody tr:hover {
+                background-color: #f9f9f9;
+            }
+
+            .btn-action i {
+                margin: 0 4px;
+            }
+
+            .niveau-label {
+                background-color: var(--beige);
+                font-weight: bold;
+                padding: 10px;
+                text-align: left;
+                border-left: 4px solid var(--bleu);
+                margin-top: 20px;
+            }
+
+            @media (max-width: 768px) {
+                table, thead, tbody, th, td, tr {
+                    display: block;
+                }
+
+                thead {
+                    display: none;
+                }
+
+                td {
+                    text-align: left;
+                    padding-left: 50%;
+                    position: relative;
+                    border-bottom: 1px solid #ccc;
+                }
+
+                td::before {
+                    content: attr(data-label);
+                    position: absolute;
+                    left: 16px;
+                    font-weight: bold;
+                    color: var(--bleu);
+                }
             }
         </style>
     </head>
     <body>
-        <div class="container">
-            <div class="top-btn">
-                <a href="../view/ajouter_etudiant.php" class="btn btn-custom">+ Ajouter Étudiant</a>
-            </div>
-    ';
+        <div class="container-etudiants">
+            <h2>🎓 Étudiants par Filière</h2>
+            <div class="d-flex justify-content-between mb-3">
+                <a href="acceuil_admin.php" class="btn btn-secondary">← Retour</a>
+                <a href="ajouter_etudiant.php" class="btn btn-ajouter">+ Ajouter un étudiant</a>
+            </div>';
 
     foreach ($res as $r) {
-        echo "<div class='filiere-card'>";
-        echo "<h3>Étudiants de la filière : <strong>{$r['nom']}</strong></h3>";
+        echo "<h4 style='color:#003973;margin-top:30px;'>Filière : {$r['nom']}</h4>";
 
         $etudes = display_pare_filier($r["id_filiere"]);
+        $niv1 = 0;
+        $niv2 = 0;
 
         if (!empty($etudes)) {
-            echo "
-                <div class='table-responsive'>
-                    <table class='table table-bordered'>
-                        <thead>
-                            <tr>
-                                <th>Nom et prénom</th>
-                                <th>Email</th>
-                                <th>Telephone</th>
-                                <th>Genre</th>
-                                <th>Date de Naissance</th>
-                                <th>Niveau</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            ";
-            $niv1=0;
-            $niv2=0;
+            echo "<table class='table table-striped'>";
+            echo "<thead>
+                    <tr>
+                        <th>Nom complet</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Genre</th>
+                        <th>Date de Naissance</th>
+                        <th>Niveau</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>";
+
             foreach ($etudes as $e) {
-                if($e['niveau']==1 && $niv1==0){
-                    echo "<tr><td colspan=7><h4>Premier niveau</h4></td></tr>";
+                if ($e['niveau'] == 1 && $niv1 == 0) {
+                    echo "<tr><td colspan='7' class='niveau-label'>🥇 Niveau 1</td></tr>";
                     $niv1++;
-                }else if($e['niveau']==2 && $niv2==0){
-                    echo "<tr><td colspan=7><h4>deuxième niveau</h4></td></tr>";
+                }
+                if ($e['niveau'] == 2 && $niv2 == 0) {
+                    echo "<tr><td colspan='7' class='niveau-label'>🥈 Niveau 2</td></tr>";
                     $niv2++;
                 }
-                echo "
-                            <tr>
-                                <td>{$e['nom']}</td>
-                                <td>{$e['email']}</td>
-                                <td>{$e['telephone']}</td>
-                                <td>{$e['genre']}</td>
-                                <td>{$e['date_nissance']}</td>
-                                <td>{$e['niveau']}</td>";
-                                echo '<td>
-                                        <button class="btn btn-sm btn-outline-warning btn-action" title="Modifier"><a href="edite_etudiant.php?
-                                        
-                                        id='.$e["id_etudiant"].'&telephone='.$e["telephone"].'&nom='.$e["nom"].'&email='.$e["email"].                                                                                            
-                                        '&genre='.$e["genre"].'&date_naissance='.$e["date_nissance"].'&niveau='.$e["niveau"].'&photo='
-                                        .$e["photo"].'&mo_de_pass='.$e["mot_de_pass"].'&id_filiere='.$r["id_filiere"].'"
-                                        
-                                        class="fas fa-pen"></a></button>
-                                        <button class="btn btn-sm btn-outline-danger btn-action" title="Supprimer"><a href="delete_etudiant.php?id='.$e["id_etudiant"].'" class="fas fa-trash-alt"></a></button></td>';
-                                
-                                echo"</tr>";
+
+                echo "<tr>
+                        <td data-label='Nom complet'>{$e['nom']}</td>
+                        <td data-label='Email'>{$e['email']}</td>
+                        <td data-label='Téléphone'>{$e['telephone']}</td>
+                        <td data-label='Genre'>{$e['genre']}</td>
+                        <td data-label='Date de Naissance'>{$e['date_nissance']}</td>
+                        <td data-label='Niveau'>{$e['niveau']}</td>
+                        <td data-label='Actions'>
+                            <a href='edite_etudiant.php?id={$e["id_etudiant"]}&telephone={$e["telephone"]}&nom={$e["nom"]}&email={$e["email"]}&genre={$e["genre"]}&date_naissance={$e["date_nissance"]}&niveau={$e["niveau"]}&photo={$e["photo"]}&mo_de_pass={$e["mot_de_pass"]}&id_filiere={$r["id_filiere"]}' class='btn btn-sm btn-outline-warning btn-action' title='Modifier'>
+                                <i class='fas fa-pen'></i>
+                            </a>
+                            <a href='delete_etudiant.php?id={$e["id_etudiant"]}' class='btn btn-sm btn-outline-danger btn-action' title='Supprimer'>
+                                <i class='fas fa-trash-alt'></i>
+                            </a>
+                        </td>
+                    </tr>";
             }
-            echo "
-                        </tbody>
-                    </table>
-                </div>
-            ";
+
+            echo "</tbody></table>";
         } else {
             echo "<div class='alert alert-warning mt-3'>Aucun étudiant trouvé dans cette filière.</div>";
         }
-
-        echo "</div>";
     }
 
-    echo '
-        <div class="bottom-btn">
-            <a href="../view/acceuil_admin.php" class="btn btn-dark">← Retour à l\'accueil</a>
-        </div>
-        </div>
+    echo '</div>
+        <script src="../bootstrap/js/bootstrap.js"></script>
     </body>
     </html>';
 }
+
 /*
 function ajouter_matiere(){
     require_once "../view/ajouter_matiere.php";
