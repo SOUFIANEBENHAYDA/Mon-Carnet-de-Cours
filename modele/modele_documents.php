@@ -92,6 +92,7 @@ class Documents{
     return $stmt->fetch()['total'];
     }
 
+    
     static function count_matieres() {
         $pdo = connexion_database();
         $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM matieres");
