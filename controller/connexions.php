@@ -112,8 +112,8 @@ function edite_etudiant(){
     require_once "../view/edite_etudiant_view.php";
 }
 
-function display_emploi_etudiant(){
-    $result=Emploi::display_for_etudiant_by_filiere($_GET["id_filiere"], $_GET["niveau"]);
+function display_emploi_etudiant($f, $n){
+    $result=Emploi::display_for_etudiant_by_filiere($f, $n);
     return $result;
 }
 //$_SESSION["id_filiere"]=1;

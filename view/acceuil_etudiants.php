@@ -11,26 +11,35 @@ foreach ($res as $doc) {
     }
     $groupes[$matiere][] = $doc;
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
-    <?php
+  <?php
     //require_once "../modele/modele_etudiant.php"; wayak t7ayd l comment hhhh
     require_once "../controller/connexions.php";
-    $res=display_emploi_etudiant();
-    
+    $_SESSION["test"]="test";
+    var_dump($_SESSION["test"]);
+    //////////////////////// haaaaaa lmochkill 
     session_start();
-    
+    //var_dump($_SESSION["etudiant"]);
     if(!isset($_SESSION["etudiant"])){
       header("Location: ../view/connexion_etudiant.php");
       exit();
     }else{
       $etud=$_SESSION["etudiant"];
     }
+    
+    if(!empty($_GET["id_filiere"])&&!empty($_GET["niveau"])&&!empty($_GET["id_etudiant"])){
+      $_SESSION["id_filiere"]=$_GET["id_filiere"];
+      $_SESSION["niveau"]=$_GET["niveau"];
+      $_SESSION["id_etudiant"]=$_GET["id_etudiant"];
+    }
+    //var_dump($_SESSION["id_filiere"]);
 
-
+    $res=display_emploi_etudiant($_SESSION["id_filiere"], $_SESSION["niveau"]);
     ?>
 
 <head>
