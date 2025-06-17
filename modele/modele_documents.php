@@ -73,6 +73,31 @@ class Documents{
         $stat->bindParam(":id", $_GET["id"]);
         $stat->execute();
     }
+
+    static function document_affiche() {
+    $pdo = connexion_database();
+    $stmt = $pdo->prepare("
+        SELECT d.*, m.nom AS nom_matiere, m.id_matiere
+        FROM documents d
+        JOIN matieres m ON d.id_matiere = m.id_matiere
+        ORDER BY m.nom, d.titre
+    ");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    static function count_documents() {
+    $pdo = connexion_database();
+    $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM documents");
+    $stmt->execute();
+    return $stmt->fetch()['total'];
+    }
+
+    static function count_matieres() {
+        $pdo = connexion_database();
+        $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM matieres");
+        $stmt->execute();
+        return $stmt->fetch()['total'];
+    }
 }
 
 

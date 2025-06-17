@@ -372,4 +372,11 @@ function ajouter_matiere(){
     }
 }
     */
+
+function affiche_docs(){
+    $res = Documents::document_affiche();
+    $total_documents = Documents::count_documents();
+    $total_matieres = Documents::count_matieres();
+    require_once __DIR__. '/../view/afficher_document.php';
+}
 ?>
