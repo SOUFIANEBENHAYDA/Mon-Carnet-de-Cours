@@ -64,7 +64,7 @@
             </a>
         </div>
         <div class="col-md-4">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="ajouter_emploi.php" class="text-decoration-none text-dark">
                 <div class="dashboard-box emploi">
                     <h4>📅 Emploi du Temps</h4>
                     <p>Consulter et organiser les horaires des cours.</p>

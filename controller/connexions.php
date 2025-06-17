@@ -10,6 +10,7 @@ require_once __DIR__ . '/../modele/modele_matiere.php';
 require_once __DIR__ . '/../modele/modele_prof.php';
 require_once __DIR__ . '/../modele/modele_documents.php';
 require_once __DIR__ . '/../modele/modele_espace.php';
+require_once __DIR__ . '/../modele/modele_cours.php';
 
 
 
@@ -174,6 +175,14 @@ function espace_etu(){
     require_once __DIR__. '/../view/acceuil_etudiants.php';
 }
 
+function ajouter_emploi(){
+    if (!empty($_POST["filiere"])){
+        Emploi::create();
+        header("Location: ../view/ajouter_emploi.php");
+    }
+    $res=display_filiers();
+    require_once "../view/ajouter_emploi_view.php";
+}
 
 //mal9itch kifach ndir liha b view hada lah
 function display_etudiants_par_filiere() {
