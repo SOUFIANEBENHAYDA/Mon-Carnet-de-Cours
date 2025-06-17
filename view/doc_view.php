@@ -81,7 +81,7 @@
                         <td>' . $r["titre"] . '</td>
                         <td><a class="btn btn-success btn-sm" href="' . $r["fichier"] . '" download="cours_' . $r["titre"] . '.pdf">Télécharger</a></td>
                         <td><a class="btn btn-info btn-sm" href="' . $r["fichier"] . '" target="_blank">Lire</a></td>
-                        <td><button class="btn btn-sm btn-outline-danger btn-action" title="Supprimer"><a href="delete_docs.php?id=' . $r["id_matiere"] . '" class="fas fa-trash-alt"></a></button></td></td>
+                        <td><button class="btn btn-sm btn-outline-danger btn-action" title="Supprimer"><a href="delete_docs.php?id=' . $r["id_document"] . '" class="fas fa-trash-alt"></a></button></td></td>
                     </tr>';
                     //maybe the id of get
                     
