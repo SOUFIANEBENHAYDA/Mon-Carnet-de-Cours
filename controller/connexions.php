@@ -72,17 +72,6 @@ function id_etudiant_parNom_action($nom){
     return $id_nom;
 }
 
-function delete_etudiant(){
-    Etudiant::destroy();
-    header("Location: ../view/edite_etudiant_view.php");
-}
-
-
-function edite_etudiant(){
-    require_once "../view/edite_etudiant_view.php";
-    Etudiant::edit();
-}
-
 function add_note(){
     $res=Note::note_etud_display();
     require_once __DIR__.'/../view/ajouter_note.php';
@@ -108,10 +97,14 @@ function forum_distroy(){
     }
 }
 
+function delete_etudiant(){
+    Etudiant::destroy();
+    header("Location: ../view/list_etudiant.php");
+}
+
 function delete_forums_all(){
     EspaceEtudiant::destroy_All();
     header('location: ../view/afficher_espace.php');
-
 }
 
 function note_destroy(){
@@ -138,11 +131,6 @@ function document_display_action(){
     require_once "../view/doc_view.php";
 }
 
-function delete_docs(){
-    Documents::destroy();
-    header("Location: ../view/docs.php");
-}
-
 function ajouter_doc(){
     if(!empty($_POST["titre"]) && !empty($_POST["id_matiere"]) && isset($_FILES["fichier"])) {
         $fichier = "../uploaded_docs/" . $_FILES["fichier"]["name"];
@@ -150,7 +138,7 @@ function ajouter_doc(){
         $doc = new Documents($_POST["titre"], $fichier, $_POST["id_matiere"]);
         $doc->ajouter();
     }
-    
+
     // Load matieres and the view
     $res = Matiere::display();
     require_once "../view/ajouter_doc_view.php";
@@ -335,7 +323,6 @@ function display_etudiants_par_filiere() {
     </body>
     </html>';
 }
-
 /*
 function ajouter_matiere(){
     require_once "../view/ajouter_matiere.php";
