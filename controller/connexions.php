@@ -165,8 +165,6 @@ function delete_docs(){
     exit();
 }
 
-
-
 function espace(){
     require_once __DIR__. '/../view/espace_colab.php';
 }
