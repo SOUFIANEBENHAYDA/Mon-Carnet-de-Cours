@@ -317,7 +317,7 @@ foreach ($res as $doc) {
         <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> Tableau de bord</a></li>
         <li><a href="#" class="nav-link"><i class="fas fa-book"></i> Mes Matières</a></li>
         <li><a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Emploi du temps</a></li>
-        <li><a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Mes Notes</a></li>
+        <li><a href="../view/etud_note.php?id=<?php echo $_SESSION["id_etudiant"]?>" class="nav-link"><i class="fas fa-chart-bar"></i> Mes Notes</a></li>
         <li><a href="../view/lien_docs.php" class="nav-link"><i class="fas fa-file-pdf"></i> Ressources</a></li>
         <li><a href="../view/lien_espace.php" class="nav-link"><i class="fas fa-users"></i> Espace Collaboratif</a></li>
         <li><a href="../view/deconnexion.php" class="nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>

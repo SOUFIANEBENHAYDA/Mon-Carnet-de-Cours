@@ -100,6 +100,15 @@ class Note{
         return $notes;
         }
 
+    static function note_pour_etudiant($id){
+        $pdo=connexion_database();
+        $stat=$pdo->prepare('SELECT n.id_note as "idn", e.id_etudiant as "ide", e.nom as "nom_etud", m.nom as "matiere",n.type_note as "type_note", n.valeur as "note" FROM etudiants e INNER JOIN notes n ON e.id_etudiant=n.id_etudiant INNER JOIN matieres m ON n.id_matiere=m.id_matiere WHERE e.id_etudiant=:id ORDER BY e.nom,m.nom , n.type_note');
+        $stat->bindParam(":id",$id);
+        $stat->execute();
+        $notes=$stat->fetchAll();
+        return $notes;
+        }
+
 
     function edit(){
         $pdo = connexion_database();

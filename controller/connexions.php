@@ -180,6 +180,10 @@ function espace_etu(){
     EspaceEtudiant::create();
     require_once __DIR__. '/../view/acceuil_etudiants.php';
 }
+function etud_note_desplay($id){
+    $res = Matiere::display();
+    require_once "../view/not_etud_display.php";
+}
 
 function ajouter_emploi(){
     if (!empty($_POST["filiere"])){
