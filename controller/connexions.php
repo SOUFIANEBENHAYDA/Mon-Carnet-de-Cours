@@ -102,6 +102,19 @@ function delete_etudiant(){
     header("Location: ../view/list_etudiant.php");
 }
 
+function edite_etudiant(){
+    if (!empty($_POST["nom"]) && !empty($_POST["tele"]) && !empty($_POST["email"]) && !empty($_POST["genre"]) && !empty($_POST["date_nais"]) && !empty($_POST["niveau"]) && !empty($_FILES["photo"]) && !empty($_POST["filiere"]) && !empty($_POST["password"]) && !empty($_POST["id"])) {
+        Etudiant::edit();
+        header("Location: ../view/list_etudiant.php");
+        exit();
+    }
+    require_once "../view/edite_etudiant_view.php";
+}
+
+
+
+
+
 function delete_forums_all(){
     EspaceEtudiant::destroy_All();
     header('location: ../view/afficher_espace.php');
@@ -137,12 +150,22 @@ function ajouter_doc(){
         move_uploaded_file($_FILES["fichier"]["tmp_name"], $fichier);
         $doc = new Documents($_POST["titre"], $fichier, $_POST["id_matiere"]);
         $doc->ajouter();
+        header("Location: ../view/docs.php");
+        exit();
     }
-
+    
     // Load matieres and the view
     $res = Matiere::display();
     require_once "../view/ajouter_doc_view.php";
 }
+
+function delete_docs(){
+    Documents::destroy();
+    header("Location: ../view/docs.php");
+    exit();
+}
+
+
 
 function espace(){
     require_once __DIR__. '/../view/espace_colab.php';
