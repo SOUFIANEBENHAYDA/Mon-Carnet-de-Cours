@@ -89,6 +89,7 @@ class Emploi{
     
         
     }
+
     static function create(){
         $pdo = connexion_database();
         $stat=$pdo->prepare("INSERT INTO 
@@ -142,9 +143,14 @@ class Emploi{
 
         $stat->execute();
     }
-    static function display_for_etudiant(){
+    static function display_for_etudiant_by_filiere($f,$n){
         $pdo = connexion_database();
-        $stat=$pdo->prepare("SELECT * FROM ");
+        $stmt = $pdo -> prepare("SELECT * FROM emploi where id_filiere=:idf AND niveau=:niv AND id_emploi=(select MAX(id_emploi) from emploi where id_filiere=:idf)");
+        $stmt->bindParam(":idf", $f);
+        $stmt->bindParam(":niv", $n);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
     function edit(){
         $pdo = connexion_database();
@@ -152,8 +158,6 @@ class Emploi{
     function destroy(){
         $pdo = connexion_database();
     }
-
+    
 }
-
-
 ?>

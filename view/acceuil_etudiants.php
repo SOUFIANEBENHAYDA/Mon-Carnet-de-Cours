@@ -4,8 +4,10 @@
     <?php
     //require_once "../modele/modele_etudiant.php"; wayak t7ayd l comment hhhh
     require_once "../controller/connexions.php";
+    $res=display_emploi_etudiant();
     
     session_start();
+    
     if(!isset($_SESSION["etudiant"])){
       header("Location: ../view/connexion_etudiant.php");
       exit();
@@ -294,7 +296,7 @@
         <li><a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Mes Notes</a></li>
         <li><a href="../view/lien_docs.php" class="nav-link"><i class="fas fa-file-pdf"></i> Ressources</a></li>
         <li><a href="../view/lien_espace.php" class="nav-link"><i class="fas fa-users"></i> Espace Collaboratif</a></li>
-        <li><a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+        <li><a href="../view/deconnexion.php" class="nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
       </ul>
     </nav>
 
@@ -356,32 +358,45 @@
             <th>Mercredi</th>
             <th>Jeudi</th>
             <th>Vendredi</th>
+            <th>Samedi</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>08h-10h</td>
-            <td>Algorithmique (A101)</td>
-            <td></td>
-            <td>Base de données (B204)</td>
-            <td>PHP Avancé (C302)</td>
-            <td>UI/UX Design (A101)</td>
+            <td><?php echo $res["lun1"]; ?></td>
+            <td><?php echo $res["mar1"]; ?></td>
+            <td><?php echo $res["mer1"]; ?></td>
+            <td><?php echo $res["jeu1"]; ?></td>
+            <td><?php echo $res["ven1"]; ?></td>
+            <td><?php echo $res["sam1"]; ?></td>
           </tr>
           <tr>
             <td>10h-12h</td>
-            <td></td>
-            <td>JavaScript (B204)</td>
-            <td>Projet Web (Labo 3)</td>
-            <td></td>
-            <td>Anglais Technique (D105)</td>
+            <td><?php echo $res["lun2"]; ?></td>
+            <td><?php echo $res["mar2"]; ?></td>
+            <td><?php echo $res["mer2"]; ?></td>
+            <td><?php echo $res["jeu2"]; ?></td>
+            <td><?php echo $res["ven2"]; ?></td>
+            <td><?php echo $res["sam2"]; ?></td>
           </tr>
           <tr>
             <td>14h-16h</td>
-            <td>Gestion de projet (C302)</td>
-            <td>Framework JS (Labo 2)</td>
-            <td></td>
-            <td>Algorithmique (A101)</td>
-            <td></td>
+            <td><?php echo $res["lun3"]; ?></td>
+            <td><?php echo $res["mar3"]; ?></td>
+            <td><?php echo $res["mer3"]; ?></td>
+            <td><?php echo $res["jeu3"]; ?></td>
+            <td><?php echo $res["ven3"]; ?></td>
+            <td><?php echo $res["sam3"]; ?></td>
+          </tr>
+          <tr>
+            <td>16h-18h</td>
+            <td><?php echo $res["lun4"]; ?></td>
+            <td><?php echo $res["mar4"]; ?></td>
+            <td><?php echo $res["mer4"]; ?></td>
+            <td><?php echo $res["jeu4"]; ?></td>
+            <td><?php echo $res["ven4"]; ?></td>
+            <td><?php echo $res["sam4"]; ?></td>
           </tr>
         </tbody>
       </table>

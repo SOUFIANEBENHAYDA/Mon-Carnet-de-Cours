@@ -1,5 +1,4 @@
 <?php
-
 use Dom\Document;
 
 require_once __DIR__ . '/../modele/modele_filiere.php';
@@ -21,9 +20,10 @@ function choix_connexion(){
 
 function connexion_admin(){
     loginAdmin_action();
-
+    
     
 }
+//session_start();
 
 
 function donne_verification(){
@@ -112,6 +112,12 @@ function edite_etudiant(){
     require_once "../view/edite_etudiant_view.php";
 }
 
+function display_emploi_etudiant(){
+    $result=Emploi::display_for_etudiant_by_filiere($_GET["id_filiere"], $_GET["niveau"]);
+    return $result;
+}
+//$_SESSION["id_filiere"]=1;
+//var_dump(display_emploi_etudiant());
 
 
 
@@ -388,4 +394,6 @@ function affiche_docs(){
     $total_matieres = Documents::count_matieres();
     require_once __DIR__. '/../view/afficher_document.php';
 }
+
+
 ?>

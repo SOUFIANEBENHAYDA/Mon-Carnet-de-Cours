@@ -97,7 +97,7 @@ class Admin{
     }
     //ajouter des matieres
     public function AjouterMatiere(){
-        ajouter_matiere();
+        //ajouter_matiere();
     }
     //ajouter les cours(emploi de temps)
     public function ajoutercours(){
