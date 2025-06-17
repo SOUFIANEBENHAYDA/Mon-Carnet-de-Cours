@@ -1,3 +1,18 @@
+<?php
+require_once __DIR__. '/../controller/connexions.php';
+$res = Documents::document_affiche();
+$total_documents = Documents::count_documents();
+$total_matieres = Documents::count_matieres();
+$groupes = [];
+foreach ($res as $doc) {
+    $matiere = $doc['nom_matiere'];
+    if (!isset($groupes[$matiere])) {
+        $groupes[$matiere] = [];
+    }
+    $groupes[$matiere][] = $doc;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -339,7 +354,7 @@
             <h3 class="card-title">Ressources</h3>
             <div class="card-icon"><i class="fas fa-file-alt"></i></div>
           </div>
-          <div class="card-value">12</div>
+          <h1><?= $total_documents ?></h1>
           <p class="card-text">Documents non consultés</p>
         </div>
       </div>
