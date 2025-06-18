@@ -195,7 +195,7 @@ function ajouter_emploi(){
 }
 
 function affiche_matiere(){
-    Matiere::create();
+    $res=Matiere::display();
     require_once __DIR__. '/../view/afficherMatiere.php';
 }
 

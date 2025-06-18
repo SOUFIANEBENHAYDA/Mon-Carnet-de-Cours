@@ -45,7 +45,7 @@ class Matiere{
     }
 
 
-    static function display(){
+    static function display_y(){
         $pdo = connexion_database();
         $stmt = $pdo -> prepare("SELECT * FROM matieres");
         $stmt->execute();
@@ -53,10 +53,10 @@ class Matiere{
         return $result;
     }
     
-    static function create() {
+    static function display() {
     $pdo = connexion_database();
     $stmt = $pdo->prepare("
-        SELECT DISTINCT p.nom
+        SELECT DISTINCT m.*, p.nom AS nom_prof
         FROM professeurs p
         JOIN matieres m ON m.id_prof = p.id_prof
         ORDER BY p.nom
