@@ -194,6 +194,11 @@ function ajouter_emploi(){
     require_once "../view/ajouter_emploi_view.php";
 }
 
+function affiche_matiere(){
+    Matiere::create();
+    require_once __DIR__. '/../view/afficherMatiere.php';
+}
+
 //mal9itch kifach ndir liha b view hada lah
 function display_etudiants_par_filiere() {
     $res = display_filiers();
