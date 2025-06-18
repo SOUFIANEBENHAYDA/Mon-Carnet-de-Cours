@@ -102,7 +102,25 @@ class Note{
 
     static function note_pour_etudiant($id){
         $pdo=connexion_database();
-        $stat=$pdo->prepare('SELECT n.id_note as "idn", e.id_etudiant as "ide", e.nom as "nom_etud", m.nom as "matiere",n.type_note as "type_note", n.valeur as "note" FROM etudiants e INNER JOIN notes n ON e.id_etudiant=n.id_etudiant INNER JOIN matieres m ON n.id_matiere=m.id_matiere WHERE e.id_etudiant=:id ORDER BY e.nom,m.nom , n.type_note');
+        $stat=$pdo->prepare('SELECT 
+  n.id_note AS "idn",
+  e.id_etudiant AS "ide",
+  e.nom AS "nom_etud",
+  m.nom AS "matiere",
+  n.type_note AS "type_note",
+  n.valeur AS "note",
+  avg_table.avg_note as "moyenne"
+FROM etudiants e
+INNER JOIN notes n ON e.id_etudiant = n.id_etudiant
+INNER JOIN matieres m ON n.id_matiere = m.id_matiere
+INNER JOIN (
+  SELECT id_etudiant, id_matiere, AVG(valeur) AS avg_note
+  FROM notes
+  GROUP BY id_etudiant, id_matiere
+) avg_table ON avg_table.id_etudiant = e.id_etudiant AND avg_table.id_matiere = n.id_matiere
+WHERE e.id_etudiant = :id
+ORDER BY e.nom, m.nom, n.type_note;
+');
         $stat->bindParam(":id",$id);
         $stat->execute();
         $notes=$stat->fetchAll();

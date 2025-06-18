@@ -172,6 +172,13 @@
         //had l3iba tani hhhhhh
         require_once "../controller/connexions.php";
         $res=Note::note_pour_etudiant($id);
+        $moyenne=[];
+        $matiere=[];
+        for($i=0;$i<sizeof($res);$i++){
+          $moyenne[]=$res[$i]["moyenne"];
+          $matiere[]=$res[$i]["matiere"];
+        }
+        $i=0;
         foreach($res as $r){
           echo'
           <tr>
@@ -181,9 +188,21 @@
           <td>'.$r["type_note"].'</td>
           <td>'.$r["note"].'</td>
           </tr>';
-          }
+        }
         ?>
       </tbody>
+    </table>
+    <table>
+      <tr><td>La matiere</td><td>le moyenne</td></tr>
+      <?php
+      for($i=0;$i<sizeof($moyenne);$i++){
+        if( $i!=0 && $matiere[$i]==$matiere[$i-1]){
+          continue;
+        }
+        echo '<tr><td>'.$matiere[$i].'</td><td>'.$moyenne[$i].'</td></tr>';
+      }
+      ?>
+      
     </table>
     <a href="../view/acceuil_etudiants.php" class="btn btn-dark">Go back to acceuil</a>
   </div>
