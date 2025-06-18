@@ -1,6 +1,5 @@
 <?php
 use Dom\Document;
-
 require_once __DIR__ . '/../modele/modele_filiere.php';
 require_once __DIR__ . '/../modele/modele_etudiant.php';
 require_once __DIR__ . '/../modele/modele_admin.php';
@@ -11,6 +10,37 @@ require_once __DIR__ . '/../modele/modele_documents.php';
 require_once __DIR__ . '/../modele/modele_espace.php';
 require_once __DIR__ . '/../modele/modele_cours.php';
 
+
+function loginEtudiant_action(){
+    if(!empty($_POST["email"]) && !empty($_POST["password"])){
+        $res=loginEtudiant();
+        if($res!=false){
+            if ($_POST["password"]==$res["mot_de_pass"]){
+                session_start();
+                $etudiant= new Etudiant($res["id_etudiant"], $res["telephone"], $res["nom"], $res["email"], $res["photo"],$res["id_filiere"], $res["mot_de_pass"]);
+                $_SESSION["etudiant"]=$etudiant;
+                $_SESSION["user"]=$res["nom"];
+                var_dump($_SESSION["etudiant"]);
+                var_dump($_SESSION["user"]);
+                header("Location: ../view/acceuil_etudiants.php?id_etudiant= ".$res["id_etudiant"]."&id_filiere=".$res["id_filiere"]."&niveau=".$res["niveau"]."");
+                exit();
+            }else{
+                //echo "<script>alert('mot de pass incorrect')</script>";
+                header("Location: ../view/trait_connexion.php");
+                exit();
+            }
+        }else{
+            //echo "<script>alert('email n'existe pas')</script>";
+            header("Location: ../view/connexion_etudiant.php");
+            exit();
+        }
+    }else{
+        //echo "<script>alert('veullez remplire tous les champs')</script>";
+        header("Location: ../view/connexion_etudiant.php");
+        exit();
+    }
+}
+//les alerts makhdaminch ila drtihom 9bl l header()
 
 
 function choix_connexion(){
