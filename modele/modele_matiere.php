@@ -52,18 +52,20 @@ class Matiere{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    static function create(){
-        $pdo = connexion_database();
-        $stmt = $pdo->prepare("
-        SELECT p.nom
+    
+    static function create() {
+    $pdo = connexion_database();
+    $stmt = $pdo->prepare("
+        SELECT DISTINCT p.nom
         FROM professeurs p
         JOIN matieres m ON m.id_prof = p.id_prof
-        ORDER BY m.nom, 
-        ");
-        $stmt->execute();
-        $res=$stmt->fetchAll();
-        return $res;
-        }
+        ORDER BY p.nom
+    ");
+    $stmt->execute();
+    $res = $stmt->fetchAll();
+    return $res;
+}
+
     
 
 
