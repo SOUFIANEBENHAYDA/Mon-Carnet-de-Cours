@@ -9,13 +9,13 @@
 
   <style>
     :root {
-      --bleu: #0056b3;         
-      --beige: #f8f9fa;         
+      --bleu: #0056b3;
+      --beige: #f8f9fa;
       --or: #d4af37;
-      --hover-bg: #e2e6ea;      
-      --text-color: #212529;    
-      --btn-bg: #e9ecef;        
-      --btn-hover-bg: #ced4da;  
+      --hover-bg: #e2e6ea;
+      --text-color: #212529;
+      --btn-bg: #e9ecef;
+      --btn-hover-bg: #ced4da;
     }
 
     body {
@@ -97,8 +97,8 @@
       border-color: var(--bleu);
     }
 
-    button i {
-      font-size: 16px;
+    a {
+      text-decoration: none;
     }
 
     .btn-outline-warning:hover {
@@ -111,6 +111,10 @@
       background-color: #dc3545;
       color: white;
       border-color: #dc3545;
+    }
+
+    table + table {
+      margin-top: 50px;
     }
 
     @media (max-width: 768px) {
@@ -144,69 +148,82 @@
       td:nth-child(1)::before { content: "#"; }
       td:nth-child(2)::before { content: "Étudiant"; }
       td:nth-child(3)::before { content: "Matière"; }
-      td:nth-child(4)::before { content: "Note"; }
-      td:nth-child(5)::before { content: "Action"; }
-    }
-    a{
-        text-decoration: none;
+      td:nth-child(4)::before { content: "Type de Note"; }
+      td:nth-child(5)::before { content: "Note"; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container-notes">
-    <h2>🧾 Visualisation des Notes - Etudiant</h2>
+<div class="container-notes">
+  <h2>🧾 Visualisation des Notes - Étudiant</h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Étudiant</th>
-          <th>Matière</th>
-          <th>type de note</th>
-          <th>Note</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php 
-        //had l3iba tani hhhhhh
-        require_once "../controller/connexions.php";
-        $res=Note::note_pour_etudiant($id);
-        $moyenne=[];
-        $matiere=[];
-        for($i=0;$i<sizeof($res);$i++){
-          $moyenne[]=$res[$i]["moyenne"];
-          $matiere[]=$res[$i]["matiere"];
-        }
-        $i=0;
-        foreach($res as $r){
-          echo'
-          <tr>
-          <td>'.$r["ide"].'</td>
-          <td>'.$r["nom_etud"].'</td>
-          <td>'.$r["matiere"].'</td>
-          <td>'.$r["type_note"].'</td>
-          <td>'.$r["note"].'</td>
-          </tr>';
-        }
-        ?>
-      </tbody>
-    </table>
-    <table>
-      <tr><td>La matiere</td><td>le moyenne</td></tr>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Étudiant</th>
+        <th>Matière</th>
+        <th>Type de note</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
       <?php
-      for($i=0;$i<sizeof($moyenne);$i++){
-        if( $i!=0 && $matiere[$i]==$matiere[$i-1]){
-          continue;
+      require_once "../controller/connexions.php";
+
+
+      $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+      $res = Note::note_pour_etudiant($id);
+      $moyennes = [];
+
+      foreach ($res as $r) {
+
+        $matiere = $r['matiere'];
+        if (!isset($moyennes[$matiere])) {
+          $moyennes[$matiere] = $r['moyenne'];
         }
-        echo '<tr><td>'.$matiere[$i].'</td><td>'.$moyenne[$i].'</td></tr>';
+
+        echo '<tr>
+          <td>' . $r["ide"] . '</td>
+          <td>' . $r["nom_etud"] . '</td>
+          <td>' . $r["matiere"] . '</td>
+          <td>' . $r["type_note"] . '</td>
+          <td>' . $r["note"] . '</td>
+        </tr>';
       }
       ?>
-      
-    </table>
-    <a href="../view/acceuil_etudiants.php" class="btn btn-dark">Go back to acceuil</a>
-  </div>
+    </tbody>
+  </table>
 
-  <script src="../bootstrap/js/bootstrap.js"></script>
+  <h4 class="mt-5 mb-3 text-center text-secondary">📊 Moyennes par Matière</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Matière</th>
+        <th>Moyenne</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      foreach ($moyennes as $matiere => $moy) {
+        echo '<tr>
+          <td>' . $matiere . '</td>
+          <td>' . $moy . '</td>
+        </tr>';
+      }
+      ?>
+    </tbody>
+  </table>
+
+  <div class="text-center mt-4">
+    <a href="../view/acceuil_etudiants.php" class="btn btn-secondary">
+      <i class="fas fa-arrow-left"></i> Retour à l'accueil
+    </a>
+  </div>
+</div>
+
+<script src="../bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
