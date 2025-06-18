@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__. '/../controller/connexions.php';
 $res = Documents::document_affiche();
+$resu=Matiere::display();
 $total_documents = Documents::count_documents();
 $total_matieres = Documents::count_matieres();
 $groupes = [];
@@ -21,7 +22,7 @@ foreach ($res as $doc) {
     //require_once "../modele/modele_etudiant.php"; wayak t7ayd l comment hhhh
     require_once "../controller/connexions.php";
     $_SESSION["test"]="test";
-    var_dump($_SESSION["test"]);
+    //var_dump($_SESSION["test"]);
     //////////////////////// haaaaaa lmochkill 
     session_start();
     //var_dump($_SESSION["etudiant"]);
@@ -315,7 +316,7 @@ foreach ($res as $doc) {
     <nav class="sidebar">
       <ul class="nav-menu">
         <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> Tableau de bord</a></li>
-        <li><a href="#" class="nav-link"><i class="fas fa-book"></i> Mes Matières</a></li>
+        <li><a href="../view/lien_matiere.php" class="nav-link"><i class="fas fa-book"></i> Mes Matières</a></li>
         <li><a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Emploi du temps</a></li>
         <li><a href="../view/etud_note.php?id=<?php echo $_SESSION["id_etudiant"]?>" class="nav-link"><i class="fas fa-chart-bar"></i> Mes Notes</a></li>
         <li><a href="../view/lien_docs.php" class="nav-link"><i class="fas fa-file-pdf"></i> Ressources</a></li>
@@ -336,7 +337,7 @@ foreach ($res as $doc) {
             <h3 class="card-title">Matières suivies</h3>
             <div class="card-icon"><i class="fas fa-book"></i></div>
           </div>
-          <div class="card-value">6</div>
+          <div class="card-value"><?php echo count($resu); ?></div>
           <p class="card-text">Dont 2 nouvelles cette semaine</p>
         </div>
 

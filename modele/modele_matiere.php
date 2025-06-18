@@ -45,16 +45,31 @@ class Matiere{
     }
 
 
-    static function display(){
+    static function display_y(){
         $pdo = connexion_database();
         $stmt = $pdo -> prepare("SELECT * FROM matieres");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    function create(){
-        $pdo = connexion_database();
-    }
+    
+    static function display() {
+    $pdo = connexion_database();
+    $stmt = $pdo->prepare("
+        SELECT DISTINCT m.*, p.nom AS nom_prof
+        FROM professeurs p
+        JOIN matieres m ON m.id_prof = p.id_prof
+        ORDER BY p.nom
+    ");
+    $stmt->execute();
+    $res = $stmt->fetchAll();
+    return $res;
+}
+
+    
+
+
+
     function edit(){
         $pdo = connexion_database();
     }
