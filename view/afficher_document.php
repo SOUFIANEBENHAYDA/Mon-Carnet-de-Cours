@@ -181,7 +181,8 @@ foreach ($res as $doc) {
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 floating-animation">
                 <h1 class="text-5xl font-bold text-white mb-4">
-                    <i class="fas fa-graduation-cap mr-4"></i>EduTrack
+                    <i class="fas fa-graduation-cap mr-4"></i>
+                    <a href="../view/acceuil_etudiants.php">EduTrack</a>
                 </h1>
                 <p class="text-xl text-blue-100 mb-8">Bibliothèque de Documents Académiques</p>
                 <div class="max-w-md mx-auto mb-8">
@@ -260,6 +261,27 @@ foreach ($res as $doc) {
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase(); 
+            const subjects = document.querySelectorAll(".subject-card");
+
+            subjects.forEach(subject => {
+                const docRows = subject.querySelectorAll(".document-row"); e
+                let matchCount = 0;
+
+                docRows.forEach(row => {
+                    const text = row.innerText.toLowerCase(); 
+                    const matches = text.includes(searchTerm); 
+                    row.style.display = matches ? "flex" : "none";
+
+                    if (matches) matchCount++;
+                });
+
+                subject.style.display = matchCount > 0 ? "block" : "none";
+            });
+        });
+    </script>
 
 </body>
 </html>

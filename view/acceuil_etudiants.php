@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__. '/../controller/connexions.php';
 $res = Documents::document_affiche();
+$resu=Matiere::display();
 $total_documents = Documents::count_documents();
 $total_matieres = Documents::count_matieres();
 $groupes = [];
@@ -21,7 +22,7 @@ foreach ($res as $doc) {
     //require_once "../modele/modele_etudiant.php"; wayak t7ayd l comment hhhh
     require_once "../controller/connexions.php";
     $_SESSION["test"]="test";
-    var_dump($_SESSION["test"]);
+    //var_dump($_SESSION["test"]);
     //////////////////////// haaaaaa lmochkill 
     session_start();
     //var_dump($_SESSION["etudiant"]);
@@ -336,7 +337,7 @@ foreach ($res as $doc) {
             <h3 class="card-title">Matières suivies</h3>
             <div class="card-icon"><i class="fas fa-book"></i></div>
           </div>
-          <div class="card-value">6</div>
+          <div class="card-value"><?php echo count($resu); ?></div>
           <p class="card-text">Dont 2 nouvelles cette semaine</p>
         </div>
 
