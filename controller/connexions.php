@@ -20,8 +20,8 @@ function loginEtudiant_action(){
                 $etudiant= new Etudiant($res["id_etudiant"], $res["telephone"], $res["nom"], $res["email"], $res["photo"],$res["id_filiere"], $res["mot_de_pass"]);
                 $_SESSION["etudiant"]=$etudiant;
                 $_SESSION["user"]=$res["nom"];
-                var_dump($_SESSION["etudiant"]);
-                var_dump($_SESSION["user"]);
+                //var_dump($_SESSION["etudiant"]);
+                //var_dump($_SESSION["user"]);
                 header("Location: ../view/acceuil_etudiants.php?id_etudiant= ".$res["id_etudiant"]."&id_filiere=".$res["id_filiere"]."&niveau=".$res["niveau"]."");
                 exit();
             }else{

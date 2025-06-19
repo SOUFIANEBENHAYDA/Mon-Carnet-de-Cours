@@ -21,16 +21,16 @@ foreach ($res as $doc) {
   <?php
     //require_once "../modele/modele_etudiant.php"; wayak t7ayd l comment hhhh
     require_once "../controller/connexions.php";
-    $_SESSION["test"]="test";
-    //var_dump($_SESSION["test"]);
+
     //////////////////////// haaaaaa lmochkill 
     session_start();
     //var_dump($_SESSION["etudiant"]);
-    if(!isset($_SESSION["etudiant"])){
+    if(!isset($_SESSION["user"])){
       header("Location: ../view/connexion_etudiant.php");
       exit();
     }else{
       $etud=$_SESSION["etudiant"];
+      //var_dump($_SESSION["etudiant"]);
     }
     
     if(!empty($_GET["id_filiere"])&&!empty($_GET["niveau"])&&!empty($_GET["id_etudiant"])){
