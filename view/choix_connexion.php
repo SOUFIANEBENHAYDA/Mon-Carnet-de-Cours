@@ -3,122 +3,482 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bienvenue sur EduTrack</title>
+  <title>EduTrack - Interface de Connexion</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bleu-fonce: #003973;
-      --or: #d4af37;
-      --blanc: #ffffff;
-      --noir: #000;
+      --primary-blue: #003973;
+      --accent-gold: #d4af37;
+      --gradient-start: #667eea;
+      --gradient-end: #764ba2;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                  url('Marrakech.jpg') no-repeat center center fixed;
-      background-size: cover;
+      font-family: 'Inter', 'Poppins', sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
       min-height: 100vh;
+      position: relative;
+    }
+
+    .bg-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #667eea, #764ba2, #003973, #d4af37);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      z-index: -2;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+
+    .particle:nth-child(1) {
+      width: 10px;
+      height: 10px;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      width: 15px;
+      height: 15px;
+      left: 20%;
+      animation-delay: 2s;
+    }
+
+    .particle:nth-child(3) {
+      width: 8px;
+      height: 8px;
+      left: 30%;
+      animation-delay: 4s;
+    }
+
+    .particle:nth-child(4) {
+      width: 12px;
+      height: 12px;
+      left: 40%;
+      animation-delay: 6s;
+    }
+
+    .particle:nth-child(5) {
+      width: 20px;
+      height: 20px;
+      left: 50%;
+      animation-delay: 8s;
+    }
+
+    .particle:nth-child(6) {
+      width: 6px;
+      height: 6px;
+      left: 60%;
+      animation-delay: 10s;
+    }
+
+    .particle:nth-child(7) {
+      width: 14px;
+      height: 14px;
+      left: 70%;
+      animation-delay: 12s;
+    }
+
+    .particle:nth-child(8) {
+      width: 9px;
+      height: 9px;
+      left: 80%;
+      animation-delay: 14s;
+    }
+
+    .particle:nth-child(9) {
+      width: 16px;
+      height: 16px;
+      left: 90%;
+      animation-delay: 16s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .main-container {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .container {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 50px 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-    }
-
-    .container h1 {
-      color: var(--bleu-fonce);
-      font-size: 32px;
-      margin-bottom: 30px;
-      font-weight: 600;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      margin: 15px 0;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--blanc);
-      background-color: var(--bleu-fonce);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::after {
-      content: "";
-      position: absolute;
-      background: var(--or);
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      transition: all 0.4s ease;
-      z-index: 0;
-    }
-
-    .btn:hover::after {
-      left: 0;
-    }
-
-    .btn span {
+      min-height: 100vh;
+      padding: 20px;
       position: relative;
       z-index: 1;
     }
 
-    .btn:hover span {
-      color: var(--noir);
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 60px 50px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 450px;
+      width: 100%;
+      position: relative;
+      animation: cardSlideIn 1s ease-out;
     }
 
-    a {
+    @keyframes cardSlideIn {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+
+    .title {
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+
+    .title-accent {
+      background: linear-gradient(135deg, var(--accent-gold), #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @keyframes titleGlow {
+      0% {
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+      100% {
+        text-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+      }
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .btn-enhanced {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 18px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, var(--primary-blue), #1e3a8a);
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
       text-decoration: none;
-      color: inherit;
+      box-shadow: 0 8px 25px rgba(0, 57, 115, 0.3);
     }
 
-    @media (max-width: 500px) {
-      .container {
+    .btn-enhanced::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-gold), #ffd700);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
+    }
+
+    .btn-enhanced:hover::before {
+      left: 0;
+    }
+
+    .btn-enhanced:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 57, 115, 0.4);
+      color: var(--primary-blue);
+    }
+
+    .btn-enhanced .btn-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-enhanced .btn-icon {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-enhanced:hover .btn-icon {
+      transform: scale(1.1);
+    }
+
+    .btn-enhanced::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-enhanced:active::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .decoration {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.1;
+    }
+
+    .decoration-1 {
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      animation: rotate 20s linear infinite;
+    }
+
+    .decoration-2 {
+      bottom: 30px;
+      left: 20px;
+      font-size: 1.5rem;
+      animation: rotate 15s linear infinite reverse;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+    @media (max-width: 640px) {
+      .glass-card {
+        padding: 40px 30px;
+        margin: 10px;
+      }
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .btn-enhanced {
+        padding: 16px 25px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .glass-card {
         padding: 30px 20px;
       }
 
-      .container h1 {
-        font-size: 26px;
+      .title {
+        font-size: 1.75rem;
       }
 
-      .btn {
-        font-size: 16px;
+      .btn-enhanced {
+        padding: 14px 20px;
       }
+    }
+
+
+    .loading-animation {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      border-radius: 25px;
+      animation: loading 2s linear infinite;
+      opacity: 0;
+    }
+
+    .glass-card:hover .loading-animation {
+      opacity: 1;
+    }
+
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Bienvenue sur <span style="color: var(--or);">EduTrack</span></h1>
-    <a href="view/connexion_admin1.php">
-      <button class="btn"><span>Connexion Admin</span></button>
-    </a>
-    <a href="view/connexion_etudiant.php">
-      <button class="btn"><span>Connexion Étudiant</span></button>
-    </a>
+
+  <div class="bg-animation"></div>
+  
+
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
+
+  <div class="main-container">
+    <div class="glass-card">
+
+      <div class="loading-animation"></div>
+      
+
+      <div class="decoration decoration-1">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="decoration decoration-2">
+        <i class="fas fa-book"></i>
+      </div>
+
+
+      <h1 class="title">
+        Bienvenue sur <span class="title-accent">EduTrack</span>
+      </h1>
+      <p class="subtitle">
+        Votre plateforme éducative intelligente
+      </p>
+
+
+      <div class="btn-container">
+        <a href="view/connexion_admin1.php" class="btn-enhanced">
+          <div class="btn-content">
+            <i class="fas fa-user-shield btn-icon"></i>
+            <span>Connexion Administrateur</span>
+          </div>
+        </a>
+        
+        <a href="view/connexion_etudiant.php" class="btn-enhanced">
+          <div class="btn-content">
+            <i class="fas fa-user-graduate btn-icon"></i>
+            <span>Connexion Étudiant</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    document.querySelectorAll('.btn-enhanced').forEach(button => {
+      button.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px) scale(1.02)';
+      });
+      
+      button.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+      
+      button.addEventListener('click', function(e) {
+ 
+        this.style.transform = 'translateY(-2px) scale(0.98)';
+        setTimeout(() => {
+          this.style.transform = 'translateY(-5px) scale(1.02)';
+        }, 150);
+      });
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+      
+      document.querySelectorAll('.decoration').forEach((decoration, index) => {
+        const speed = (index + 1) * 20;
+        const x = (mouseX - 0.5) * speed;
+        const y = (mouseY - 0.5) * speed;
+        decoration.style.transform = `translate(${x}px, ${y}px) rotate(${x}deg)`;
+      });
+    });
+
+
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 1s ease-in-out';
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
 </body>
 </html>
