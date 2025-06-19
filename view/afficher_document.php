@@ -267,7 +267,7 @@ foreach ($res as $doc) {
             const subjects = document.querySelectorAll(".subject-card");
 
             subjects.forEach(subject => {
-                const docRows = subject.querySelectorAll(".document-row"); e
+                const docRows = subject.querySelectorAll(".document-row"); 
                 let matchCount = 0;
 
                 docRows.forEach(row => {
