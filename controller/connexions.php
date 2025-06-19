@@ -210,6 +210,11 @@ function espace_etu(){
     EspaceEtudiant::create();
     require_once __DIR__. '/../view/acceuil_etudiants.php';
 }
+
+function display_action(){
+    $res=EspaceEtudiant::display();
+    require_once __DIR__. '/../view/forum_etdue_view.php';
+}
 function etud_note_desplay($id){
     $res = Matiere::display();
     require_once "../view/not_etud_display.php";
