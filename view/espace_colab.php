@@ -1,3 +1,12 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['user'])) {
+    header('Location: ../index.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,11 +124,13 @@
     </style>
 </head>
 <body>
+    <?php var_dump($_SESSION["etudiant"]->getNom()) ?>
     <div class="container mt-5">
         <b>Espace Collaboratif</b>
+        
         <form action="../view/trait_espace.php" method="post">
-            <input type="text" placeholder="Name" class="form-control" name="nom" required>
-            <input type="email" placeholder="Email" class="form-control" name="email" required>
+            <input type="hidden" placeholder="Name" class="form-control" name="nom" value="<?php echo $_SESSION["etudiant"]->getNom() ?>">
+            <input type="hidden" placeholder="Email" class="form-control" name="email" value="<?php echo $_SESSION["etudiant"]->getEmail() ?>" >
             <textarea class="form-control" placeholder="Message" name="contenu" required></textarea>
 
             <div class="d-flex justify-content-between">

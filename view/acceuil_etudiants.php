@@ -1,3 +1,5 @@
+<?
+?>
 <?php
 require_once __DIR__. '/../controller/connexions.php';
 $res = Documents::document_affiche();
@@ -24,14 +26,12 @@ foreach ($res as $doc) {
 
     //////////////////////// haaaaaa lmochkill 
     session_start();
+if(!isset($_SESSION["user"])){
+  header("Location: ../view/connexion_etudiant.php");
+  exit();
+}
     //var_dump($_SESSION["etudiant"]);
-    if(!isset($_SESSION["user"])){
-      header("Location: ../view/connexion_etudiant.php");
-      exit();
-    }else{
-      $etud=$_SESSION["etudiant"];
-      //var_dump($_SESSION["etudiant"]);
-    }
+    $etud=$_SESSION["etudiant"];
     
     if(!empty($_GET["id_filiere"])&&!empty($_GET["niveau"])&&!empty($_GET["id_etudiant"])){
       $_SESSION["id_filiere"]=$_GET["id_filiere"];

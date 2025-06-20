@@ -1,3 +1,13 @@
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['user'])) {
+    header('Location: ../index.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -47,7 +57,7 @@
             EduTrack - Admin
             <img src="../Images/EduTrack.jpg" alt="EduTrack">
         </span>
-        <a href="#" class="btn btn-outline-dark">Déconnexion</a>
+        <a href="../view/deconnexionadmin.php" class="btn btn-outline-dark">Déconnexion</a>
     </div>
 </nav>
 

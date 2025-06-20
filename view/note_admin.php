@@ -1,3 +1,12 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['user'])) {
+    header('Location: ../index.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -173,21 +182,6 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mariama</td>
-          <td>EFM</td>
-          <td>Mathématiques</td>
-          <td>18.5</td>
-          <td>
-            <button class="btn btn-sm btn-outline-warning me-2" title="Modifier">
-              <i class="fas fa-pen"></i>
-            </button>
-            <button class="btn btn-sm btn-outline-danger" title="Supprimer">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </td>
-        </tr>
         <?php 
         //had l3iba tani hhhhhh
         require_once "../controller/connexions.php";

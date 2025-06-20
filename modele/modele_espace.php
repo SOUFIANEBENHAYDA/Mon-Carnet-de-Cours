@@ -56,7 +56,7 @@ class EspaceEtudiant{
     /*vueeeeeeeeeeeeeee */
     static function display(){
         $pdo=connexion_database();
-        $stat=$pdo->prepare('SELECT p.id_post as "id_post" , p.contenu as contenu , p.email as "email", e.nom as "nom_etud" FROM etudiants e INNER JOIN posts_forum p ON e.id_etudiant=p.id_etudiant');
+        $stat=$pdo->prepare('SELECT p.id_post as "id_post" , p.contenu as contenu , p.email as "email", e.nom as "nom_etud" FROM etudiants e INNER JOIN posts_forum p ON e.id_etudiant=p.id_etudiant ORDER BY p.id_post DESC');
         $stat->execute();
         $forum=$stat->fetchAll();
         return $forum;

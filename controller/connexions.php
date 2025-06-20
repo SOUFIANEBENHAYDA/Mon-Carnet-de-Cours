@@ -19,7 +19,7 @@ function loginEtudiant_action(){
                 session_start();
                 $etudiant= new Etudiant($res["id_etudiant"], $res["telephone"], $res["nom"], $res["email"], $res["photo"],$res["id_filiere"], $res["mot_de_pass"]);
                 $_SESSION["etudiant"]=$etudiant;
-                $_SESSION["user"]=$res["nom"];
+                $_SESSION["user"]="etudiant";
                 //var_dump($_SESSION["etudiant"]);
                 //var_dump($_SESSION["user"]);
                 header("Location: ../view/acceuil_etudiants.php?id_etudiant= ".$res["id_etudiant"]."&id_filiere=".$res["id_filiere"]."&niveau=".$res["niveau"]."");
@@ -208,7 +208,9 @@ function espace(){
 
 function espace_etu(){
     EspaceEtudiant::create();
-    require_once __DIR__. '/../view/acceuil_etudiants.php';
+    //require_once __DIR__. '/../view/acceuil_etudiants.php';
+    header("Location: ../view/lien_etdu_forum.php");
+    exit();
 }
 
 function display_action(){
@@ -237,6 +239,7 @@ function affiche_matiere(){
 //mal9itch kifach ndir liha b view hada lah
 function display_etudiants_par_filiere() {
     $res = display_filiers();
+    
     echo '<!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -381,11 +384,11 @@ function display_etudiants_par_filiere() {
 
             foreach ($etudes as $e) {
                 if ($e['niveau'] == 1 && $niv1 == 0) {
-                    echo "<tr><td colspan='7' class='niveau-label'>🥇 Niveau 1</td></tr>";
+                    echo "<tr><td colspan='7' class='niveau-label'> Niveau 1</td></tr>";
                     $niv1++;
                 }
                 if ($e['niveau'] == 2 && $niv2 == 0) {
-                    echo "<tr><td colspan='7' class='niveau-label'>🥈 Niveau 2</td></tr>";
+                    echo "<tr><td colspan='7' class='niveau-label'> Niveau 2</td></tr>";
                     $niv2++;
                 }
 
