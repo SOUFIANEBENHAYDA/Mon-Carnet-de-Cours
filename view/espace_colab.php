@@ -124,7 +124,7 @@ if (!isset($_SESSION['user'])) {
     </style>
 </head>
 <body>
-    <?php var_dump($_SESSION["etudiant"]->getNom()) ?>
+
     <div class="container mt-5">
         <b>Espace Collaboratif</b>
         
