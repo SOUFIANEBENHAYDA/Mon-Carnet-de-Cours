@@ -293,6 +293,9 @@ if(!isset($_SESSION["user"])){
     .data-table td {
       background-color: #fff;
     }
+    a{
+      text-decoration: none;
+    }
     
   </style>
 </head>
@@ -330,34 +333,31 @@ if(!isset($_SESSION["user"])){
         <div class="breadcrumb">Accueil / Tableau de bord</div>
       </div>
 
-      <div class="dashboard-cards">
-        <div class="dashboard-card" >
-          <div class="card-header">
-            <h3 class="card-title">Matières suivies</h3>
-            <div class="card-icon"><i class="fas fa-book"></i></div>
-          </div>
-          <div class="card-value"><?php echo count($resu); ?></div>
-          <p class="card-text">Dont 2 nouvelles cette semaine</p>
+      <a href="../view/lien_matiere.php">
+        <div class="dashboard-cards">
+          <div class="dashboard-card" >
+            <div class="card-header">
+              <h3 class="card-title">Matières suivies</h3>
+              <div class="card-icon"><i class="fas fa-book"></i></div>
+            </div>
+            <div class="card-value"><?php echo count($resu); ?></div>
+            <p class="card-text">Dont 2 nouvelles cette semaine</p>
         </div>
+      </a>
 
+      <a href="../view/lien_etdu_forum.php">
         <div class="dashboard-card">
           <div class="card-header">
-            <h3 class="card-title">Moyenne Générale</h3>
-            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="card-icon"><i class="fas fa-people-group"></i></div>
+            <h3 class="card-title">Espace collaboratif</h3>
           </div>
-          <div class="card-value">14.5</div>
-          <p class="card-text">+0.8 vs semestre dernier</p>
+          <div class="card-value">&nbsp;</div>
+          <p class="card-text">Partager votre question ou point de vue </p>
         </div>
+      </a>
 
-        <div class="dashboard-card">
-          <div class="card-header">
-            <h3 class="card-title">Prochains Cours</h3>
-            <div class="card-icon"><i class="fas fa-clock"></i></div>
-          </div>
-          <div class="card-value">PHP Avancé</div>
-          <p class="card-text">Demain, 10h - Salle B204</p>
-        </div>
-
+      
+      <a href="../view/lien_docs.php">
         <div class="dashboard-card">
           <div class="card-header">
             <h3 class="card-title">Ressources</h3>
@@ -365,8 +365,9 @@ if(!isset($_SESSION["user"])){
           </div>
           <h1><?= $total_documents ?></h1>
           <p class="card-text">Documents non consultés</p>
+          </div>
         </div>
-      </div>
+      </a>
 
       <div class="section-header">
         <h3>Emploi du Temps - Semaine 42</h3>
