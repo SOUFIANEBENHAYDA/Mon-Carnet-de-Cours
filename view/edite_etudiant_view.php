@@ -19,88 +19,10 @@ $res=display_filiers();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <script src="../bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/index13.css">
     <title>Ajouter un Étudiant</title>
     <style>
-        :root {
-            --bleu-profond: #003973;
-            --bleu-clair: #1a4d8c;
-            --beige-clair: #f5f5ee;
-            --accent-or: #d4af37;
-            --accent-or-hover: #e8c766;
-            --gris: #6c757d;
-        }
-
-        body {
-            background: linear-gradient(135deg, var(--bleu-profond), var(--bleu-clair));
-            min-height: 100vh;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: none;
-        }
-
-        .card-header {
-            background-color: var(--bleu-profond);
-            color: white;
-            border-radius: 15px 15px 0 0 !important;
-            padding: 20px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
-        .form-control:focus {
-            border-color: var(--accent-or);
-            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
-        }
-
-        .btn-gold {
-            background-color: var(--accent-or);
-            color: white;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .btn-gold:hover {
-            background-color: var(--accent-or-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-            color: white;
-        }
-
-        .form-label {
-            font-weight: 500;
-            color: var(--bleu-profond);
-        }
-
-        .photo-placeholder {
-            width: 120px;
-            height: 120px;
-            background-color: var(--beige-clair);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            overflow: hidden;
-            border: 2px dashed var(--gris);
-            margin: 0 auto 20px;
-        }
-
-        .photo-placeholder:hover {
-            border-color: var(--accent-or);
-        }
-
-        .photo-icon {
-            font-size: 2rem;
-            color: var(--gris);
-        }
-        a{
-            text-decoration: none;
-        }
+        
     </style>
 </head>
 <body>

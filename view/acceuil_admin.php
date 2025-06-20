@@ -14,40 +14,9 @@ if (!isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <title>Tableau de bord Admin - EduTrack</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <style>
-        body {
-            background: linear-gradient(to right, #e0f7fa, #f1f8e9);
-            min-height: 100vh;
-        }
-
-        .dashboard-box {
-            border-radius: 15px;
-            color: #333;
-            padding: 30px;
-            text-align: center;
-            transition: 0.3s ease-in-out;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-        }
-
-        .dashboard-box:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-   
-        .matiere       { background: linear-gradient(135deg, #e3f2fd, #ffffff); }
-        .emploi        { background: linear-gradient(135deg, #fff3e0, #ffffff); }
-        .notes         { background: linear-gradient(135deg, #ede7f6, #ffffff); }
-        .documents     { background: linear-gradient(135deg, #f1f8e9, #ffffff); }
-        .forum         { background: linear-gradient(135deg, #fce4ec, #ffffff); }
-        .ajouter       { background: linear-gradient(135deg, #e8f5e9, #ffffff); }
-        .liste         { background: linear-gradient(135deg, #fffde7, #ffffff); }
-
-        img {
-            border-radius: 50%;
-            width: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/index1.css">
+    
+ 
 </head>
 <body>
 

@@ -14,63 +14,9 @@ if (!isset($_SESSION['user'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter une Note - EduTrack</title>
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index10.css">
     <style>
-        :root {
-            --bleu-profond: #003973;
-            --beige-clair: #f5f5ee;
-            --accent-or: #d4af37;
-            --accent-or-hover: #e8c766;
-            --gris: #6c757d;
-        }
-
-        body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-self: center;
-        min-height: 100vh;
-        background: url(../Images/background_admin.png);
-        background-size: cover;
-        background-position: center;
-        width: 600px;
-
-        }
-
-        .form-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .section-header h3 {
-            text-align: center;
-            color: var(--bleu-profond);
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: var(--bleu-profond);
-        }
-
-        .btn-success {
-            background-color: var(--accent-or);
-            border: none;
-            width: 100%;
-            padding: 10px;
-        }
-
-        .btn-success:hover {
-            background-color: var(--accent-or-hover);
-        }
-
-        .form-control:focus {
-            border-color: var(--accent-or);
-            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
-        }
+        
     </style>
 </head>
 <body>

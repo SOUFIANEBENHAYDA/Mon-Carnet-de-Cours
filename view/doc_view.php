@@ -17,49 +17,9 @@ if (!isset($_SESSION['user'])) {
     <title>Liste des Documents</title>
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../fontawesome-free-6.7.1-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index12.css">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: url(../Images/background_admin.png) no-repeat center center fixed;
-            background-size: cover;
-            margin: 0;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 900px;
-        }
-
-        h2 {
-            color: #003973;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-
-        .btn-primary {
-            background-color: #003973;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #00509e;
-        }
-
-        .table th {
-            background-color: #003973;
-            color: white;
-        }
-
-        .btn-sm {
-            margin: 0 2px;
-        }
+        
     </style>
 </head>
 <body>

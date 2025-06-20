@@ -13,62 +13,9 @@ if (!isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <title>Ajouter une Matière - EduTrack</title>
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index9.css">
     <style>
-        :root {
-            --bleu-profond: #003973;
-            --accent-or: #d4af37;
-            --accent-or-hover: #e8c766;
-        }
-        body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-self: center;
-        min-height: 100vh;
-        background: url(../Images/background_admin.png);
-        background-size: cover;
-        background-position: center;
-        width: 600px;
-
-        }
-
-        .form-container {
-            background-color: #ffffffee;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .form-container h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--bleu-profond);
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: var(--bleu-profond);
-        }
-
-        .form-control:focus {
-            border-color: var(--accent-or);
-            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
-        }
-
-        .btn-submit {
-            background-color: var(--accent-or);
-            border: none;
-            width: 100%;
-            padding: 10px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--accent-or-hover);
-        }
+        
     </style>
 </head>
 <body>
