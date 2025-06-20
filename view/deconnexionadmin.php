@@ -2,6 +2,6 @@
 session_start();
 unset($_SESSION["user"]);
 session_destroy();
-header("Location: ../view/connexion_admin1.php");
+header("Location: ../index.php");
 exit();
 ?>

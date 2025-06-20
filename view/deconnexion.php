@@ -2,6 +2,6 @@
 session_start();
 unset($_SESSION["user"]);
 session_destroy();
-header("Location: ../view/connexion_etudiant.php");
+header("Location: ../index.php");
 exit();
 ?>
