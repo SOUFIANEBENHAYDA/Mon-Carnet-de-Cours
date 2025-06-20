@@ -375,6 +375,7 @@ function display_etudiants_par_filiere() {
                         <th>Email</th>
                         <th>Téléphone</th>
                         <th>Genre</th>
+                        <th>Photo</th>
                         <th>Date de Naissance</th>
                         <th>Niveau</th>
                         <th>Actions</th>
@@ -397,6 +398,7 @@ function display_etudiants_par_filiere() {
                         <td data-label='Email'>{$e['email']}</td>
                         <td data-label='Téléphone'>{$e['telephone']}</td>
                         <td data-label='Genre'>{$e['genre']}</td>
+                        <td data-label='Genre'><img src='{$e['photo']}' style='width:50px'></td>
                         <td data-label='Date de Naissance'>{$e['date_nissance']}</td>
                         <td data-label='Niveau'>{$e['niveau']}</td>
                         <td data-label='Actions'>

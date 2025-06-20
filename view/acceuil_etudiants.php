@@ -59,7 +59,7 @@ if(!isset($_SESSION["user"])){
     <div class="user-profile">
       <div class="user-info">
         <div class="user-name"><?php echo $etud->getNom(); ?></div>
-        <div class="user-role"><?php echo $etud->getFilier(); ?></div>
+        <div class="user-role">Filiere: <?php echo $etud->getFilier(); ?></div>
       </div>
 
       <img src="<?php echo $etud->getPhoto() ; ?>" alt="Photo de profil" class="user-avatar" />
